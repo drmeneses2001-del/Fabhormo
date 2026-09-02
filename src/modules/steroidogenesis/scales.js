@@ -87,7 +87,7 @@ function buildBody(scene) {
     }));
     const toLeft = LEFT_LABELS.has(organ.id);
     scene.add(labelNode(organ.names.es, {
-      position: [toLeft ? -(Math.abs(x) + r + 1.6) : x + r + 1.6, y, z + 1], size: 11,
+      position: [labelX(x, r, toLeft), y, z + 1], size: 11,
       color: highlight ? token('accent') : token('ink-2'),
       weight: highlight ? 600 : 400, always: highlight,
       align: toLeft ? 'right' : 'left', avoidCollision: !highlight,
@@ -101,6 +101,13 @@ function buildBody(scene) {
 }
 
 // Reparto de etiquetas para que el tronco no se sature por un solo lado.
+/** Las etiquetas se apartan de la silueta: en la cabeza y la linea media los
+ *  organos son pequenos y el texto acabaria encima del dibujo. */
+function labelX(x, r, toLeft) {
+  const d = Math.max(Math.abs(x) + r + 1.6, 17.5);
+  return toLeft ? -d : d;
+}
+
 const LEFT_LABELS = new Set(['org:hipotalamo', 'org:cerebro', 'org:endotelio', 'org:utero',
   'org:placenta', 'org:prostata', 'org:genitales_externos', 'org:hueso', 'org:laringe']);
 
