@@ -38,7 +38,7 @@ function run() {
   stage.engine.camera.markDirty();
   stage.engine.requestRender();
   renderPanel();
-  announce('Simulacion de ' + (condition ? condition.names.es : 'la via sin bloqueos'));
+  announce('Simulación de ' + (condition ? condition.names.es : 'la vía sin bloqueos'));
 }
 
 /** Marca de direccion sobre cada metabolito y halo de acumulacion. */
@@ -81,7 +81,7 @@ function conditionList() {
   const panel = el('div', { style: { display: 'flex', flexDirection: 'column', height: '100%' } });
   panel.appendChild(el('div', { style: { padding: '11px 12px 8px', borderBottom: '1px solid var(--line)' } }, [
     el('div', { class: 'a-section__title', style: { marginBottom: '3px' }, text: 'Bloqueo a simular' }),
-    el('div', { class: 'a-src', text: 'Elige un deficit enzimatico o un farmaco y observa que se acumula y que falta.' }),
+    el('div', { class: 'a-src', text: 'Elige un déficit enzimático o un fármaco y observa qué se acumula y qué falta.' }),
   ]));
   const list = el('div', { class: 'a-list', style: { overflowY: 'auto', flex: '1', padding: '6px' } });
 
@@ -89,13 +89,13 @@ function conditionList() {
     class: 'a-list__item', 'data-active': condition ? null : 'true', 'data-cond': 'ninguno',
     onClick: () => { condition = null; go('#/esteroidogenesis/deficit'); },
   }, [icon('check'), el('div', { class: 'a-list__main' }, [
-    el('div', { class: 'a-list__name', text: 'Via sin bloqueos' }),
+    el('div', { class: 'a-list__name', text: 'Vía sin bloqueos' }),
     el('div', { class: 'a-list__meta', text: 'Referencia' })])]));
 
   const genetic = all('conditions').filter((c) => c.kind !== 'farmacologico');
   const drugs = all('conditions').filter((c) => c.kind === 'farmacologico');
-  for (const [title, items, iconName] of [['Deficits enzimaticos', genetic, 'deficit'],
-                                          ['Bloqueos farmacologicos', drugs, 'pill']]) {
+  for (const [title, items, iconName] of [['Déficits enzimáticos', genetic, 'deficit'],
+                                          ['Bloqueos farmacológicos', drugs, 'pill']]) {
     list.appendChild(el('div', { class: 'a-rail__grouptitle', style: { padding: '9px 8px 3px' }, text: title }));
     for (const c of items) {
       list.appendChild(el('button', {
@@ -117,13 +117,13 @@ function renderPanel() {
   clear(panelBody);
   if (!condition) {
     panelBody.appendChild(el('div', { class: 'a-note',
-      text: 'La via sin bloqueos sirve de referencia: todos los metabolitos estan en su nivel basal.' }));
+      text: 'La vía sin bloqueos sirve de referencia: todos los metabolitos están en su nivel basal.' }));
     return;
   }
   const enz = byId(condition.enzyme);
 
   panelBody.appendChild(el('div', { class: 'a-inspector__kicker',
-    text: condition.kind === 'farmacologico' ? 'Bloqueo farmacologico' : 'Deficit enzimatico' }));
+    text: condition.kind === 'farmacologico' ? 'Bloqueo farmacológico' : 'Déficit enzimático' }));
   panelBody.appendChild(el('h2', { class: 'a-inspector__title', style: { fontSize: 'var(--fs-lg)' },
     text: condition.names.es }));
   if (enz) {
@@ -134,7 +134,7 @@ function renderPanel() {
 
   // Control de severidad.
   const sev = el('div', { class: 'a-section' }, [
-    el('div', { class: 'a-section__title', text: 'Actividad enzimatica residual' }),
+    el('div', { class: 'a-section__title', text: 'Actividad enzimática residual' }),
     el('div', { style: { display: 'flex', alignItems: 'center', gap: '9px' } }, [
       el('input', {
         type: 'range', min: '0', max: '100', value: String(Math.round(severity * 100)),
@@ -150,8 +150,8 @@ function renderPanel() {
   if (result && result.feedback && Math.abs(result.feedback - 1) > 0.08) {
     panelBody.appendChild(el('div', { class: 'a-note', style: { marginBottom: '14px' },
       text: (result.feedback > 1
-        ? 'El cortisol bajo desinhibe la ACTH: el estimulo sobre la celula esteroidogenica sube ×'
-        : 'El cortisol alto frena la ACTH: el estimulo baja ×') + num(result.feedback, 1) +
+        ? 'El cortisol bajo desinhibe la ACTH: el estímulo sobre la célula esteroidogénica sube ×'
+        : 'El cortisol alto frena la ACTH: el estímulo baja ×') + num(result.feedback, 1) +
         '. Es lo que explica la hiperplasia y el acumulo de precursores.' }));
   }
 
@@ -160,7 +160,7 @@ function renderPanel() {
   if (condition.phenotype) {
     const p = condition.phenotype;
     panelBody.appendChild(el('div', { class: 'a-section' }, [
-      el('div', { class: 'a-section__title', text: 'Cuadro clinico' }),
+      el('div', { class: 'a-section__title', text: 'Cuadro clínico' }),
       p.xx ? el('p', { style: { fontSize: 'var(--fs-md)' } }, [el('strong', { text: '46,XX. ' }), p.xx]) : null,
       p.xy ? el('p', { style: { fontSize: 'var(--fs-md)' } }, [el('strong', { text: '46,XY. ' }), p.xy]) : null,
       p.common ? el('ul', { style: { fontSize: 'var(--fs-md)' } }, p.common.map((t) => el('li', { text: t }))) : null,
@@ -191,12 +191,12 @@ function comparisonTable() {
   if (!rows.length) {
     return el('div', { class: 'a-section' }, [
       el('div', { class: 'a-section__title', text: 'Metabolitos afectados' }),
-      el('div', { class: 'a-note', text: 'Este bloqueo no tiene tabla clinica curada: se muestra solo el calculo del modelo.' }),
+      el('div', { class: 'a-note', text: 'Este bloqueo no tiene tabla clínica curada: se muestra solo el calculo del modelo.' }),
     ]);
   }
   const table = el('table', {}, [
     el('thead', {}, el('tr', {}, [
-      el('th', { text: 'Metabolito' }), el('th', { text: 'Modelo' }), el('th', { text: 'Clinica' })])),
+      el('th', { text: 'Metabolito' }), el('th', { text: 'Modelo' }), el('th', { text: 'Clínica' })])),
     el('tbody', {}, rows.map((r) => {
       const expected = (condition.expectedLevels || []).find((e) => e.mol === r.mol);
       return el('tr', {}, [
@@ -216,11 +216,11 @@ function comparisonTable() {
   ]);
   const notes = (condition.expectedLevels || []).filter((e) => e.override);
   return el('div', { class: 'a-section' }, [
-    el('div', { class: 'a-section__title', text: 'Modelo frente a la clinica' }),
+    el('div', { class: 'a-section__title', text: 'Modelo frente a la clínica' }),
     table,
     el('div', { class: 'a-src', style: { marginTop: '7px' },
       text: 'Modelo cualitativo de flujo: reparte un flujo constante desde el colesterol y no '
-          + 'reproduce concentraciones. Donde el modelo y la clinica no coinciden, manda la clinica.' }),
+          + 'reproduce concentraciones. Donde el modelo y la clínica no coinciden, manda la clínica.' }),
     ...notes.map((n) => el('div', { class: 'a-note a-note--warn', style: { marginTop: '7px' } }, [
       el('strong', { text: entityName(n.mol) + '. ' }), n.override,
     ])),
@@ -240,7 +240,7 @@ export function mount(host, ctx) {
   severity = 1;
 
   stage = mountStage(host, {
-    label: 'Simulador de bloqueos de la esteroidogenesis',
+    label: 'Simulador de bloqueos de la esteroidogénesis',
     panel: conditionList(),
     engine: { autoSpin: false, quality: 3 },
   });
@@ -270,8 +270,8 @@ export function mount(host, ctx) {
   });
 
   setStageBar([
-    crumbs([{ label: 'Esteroidogenesis', href: '#/esteroidogenesis/mapa' },
-            { label: 'Simulador de deficits', current: true }]),
+    crumbs([{ label: 'Esteroidogénesis', href: '#/esteroidogenesis/mapa' },
+            { label: 'Simulador de déficits', current: true }]),
     toolbar([el('span', { class: 'a-src',
       text: 'Rojo: se acumula · Azul y atenuado: falta' })]),
   ]);

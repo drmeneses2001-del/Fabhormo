@@ -9,15 +9,15 @@ let results = [];
 let cursor = 0;
 
 const KIND_ICON = {
-  'Molecula': 'molecule', 'Enzima': 'step', 'Organo': 'body', 'Receptor': 'receptor',
-  'Cuadro clinico': 'deficit', 'Tejido': 'scales', 'Lectura': 'book',
+  'Molécula': 'molecule', 'Enzima': 'step', 'Órgano': 'body', 'Receptor': 'receptor',
+  'Cuadro clínico': 'deficit', 'Tejido': 'scales', 'Lectura': 'book',
 };
 
 function render() {
   clear(listHost);
   if (!results.length) {
     listHost.appendChild(el('div', { class: 'a-empty', style: { height: '120px' } },
-      el('div', { class: 'a-muted', text: input.value.trim() ? 'Sin resultados' : 'Escribe para buscar moleculas, enzimas, organos o cuadros clinicos' })));
+      el('div', { class: 'a-muted', text: input.value.trim() ? 'Sin resultados' : 'Escribe para buscar moléculas, enzimas, órganos o cuadros clínicos' })));
     return;
   }
   results.forEach((r, i) => {

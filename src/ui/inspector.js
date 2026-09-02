@@ -5,16 +5,16 @@ import { linkFor, go } from '../core/router.js';
 import { familyColor } from '../engine/molecule.js';
 
 const FAMILY_LABEL = {
-  androgeno: 'Androgeno', estrogeno: 'Estrogeno', gestageno: 'Gestageno',
-  progestageno_sintetico: 'Progestageno sintetico', glucocorticoide: 'Glucocorticoide',
+  androgeno: 'Andrógeno', estrogeno: 'Estrógeno', gestageno: 'Gestágeno',
+  progestageno_sintetico: 'Progestágeno sintético', glucocorticoide: 'Glucocorticoide',
   mineralocorticoide: 'Mineralocorticoide', precursor: 'Precursor',
-  antiandrogeno: 'Antiandrogeno', antiestrogeno_serm: 'Modulador del receptor de estrogeno',
-  sprm: 'Modulador del receptor de progesterona', inhibidor_enzimatico: 'Inhibidor enzimatico',
+  antiandrogeno: 'Antiandrógeno', antiestrogeno_serm: 'Modulador del receptor de estrógeno',
+  sprm: 'Modulador del receptor de progesterona', inhibidor_enzimatico: 'Inhibidor enzimático',
   anabolizante: 'Anabolizante', otro: 'Otro',
 };
 
 const ROLE_LABEL = {
-  endogena: 'endogena', farmaco: 'farmaco', metabolito: 'metabolito', intermediario: 'intermediario',
+  endogena: 'endógena', farmaco: 'fármaco', metabolito: 'metabolito', intermediario: 'intermediario',
 };
 
 let activeTab = 'estructura';
@@ -49,11 +49,11 @@ export function inspectorTarget() { return currentId; }
 function tabsFor(entity) {
   const kind = entity.id.split(':')[0];
   if (kind === 'mol' || kind === 'drug') {
-    return [['estructura', 'Estructura'], ['sintesis', 'Sintesis'], ['accion', 'Accion'],
-            ['clinica', 'Clinica'], ['fuentes', 'Fuentes']];
+    return [['estructura', 'Estructura'], ['sintesis', 'Síntesis'], ['accion', 'Acción'],
+            ['clinica', 'Clínica'], ['fuentes', 'Fuentes']];
   }
-  if (kind === 'enz') return [['estructura', 'Enzima'], ['sintesis', 'Reacciones'], ['clinica', 'Deficits'], ['fuentes', 'Fuentes']];
-  if (kind === 'org') return [['accion', 'Territorio'], ['clinica', 'Clinica'], ['fuentes', 'Fuentes']];
+  if (kind === 'enz') return [['estructura', 'Enzima'], ['sintesis', 'Reacciones'], ['clinica', 'Déficits'], ['fuentes', 'Fuentes']];
+  if (kind === 'org') return [['accion', 'Territorio'], ['clinica', 'Clínica'], ['fuentes', 'Fuentes']];
   if (kind === 'rec') return [['estructura', 'Receptor'], ['accion', 'Ligandos'], ['fuentes', 'Fuentes']];
   if (kind === 'cond') return [['clinica', 'Cuadro'], ['sintesis', 'Bloqueo'], ['fuentes', 'Fuentes']];
   return [['estructura', 'Ficha'], ['fuentes', 'Fuentes']];
@@ -67,7 +67,7 @@ function render(host, entity) {
   const kind = entity.id.split(':')[0];
   const kicker = kind === 'mol' || kind === 'drug'
     ? [FAMILY_LABEL[entity.family] || entity.family, (entity.role || []).map((r) => ROLE_LABEL[r] || r).join(', ')].filter(Boolean).join(' · ')
-    : { enz: 'Enzima', org: 'Organo blanco', rec: 'Receptor', cond: 'Cuadro clinico', tis: 'Tejido' }[kind] || '';
+    : { enz: 'Enzima', org: 'Órgano blanco', rec: 'Receptor', cond: 'Cuadro clínico', tis: 'Tejido' }[kind] || '';
 
   const head = el('div', { class: 'a-inspector__head' }, [
     el('button', { class: 'a-inspector__close', 'aria-label': 'Cerrar ficha', onClick: closeInspector }, icon('close')),
@@ -97,7 +97,7 @@ function renderTab(body, entity, tab) {
   if (kind === 'org') return renderOrganTab(body, entity, tab);
   if (kind === 'rec') return renderReceptorTab(body, entity, tab);
   if (kind === 'cond') return renderConditionTab(body, entity, tab);
-  body.appendChild(el('div', { class: 'a-muted', text: 'Ficha en preparacion.' }));
+  body.appendChild(el('div', { class: 'a-muted', text: 'Ficha en preparación.' }));
 }
 
 /* ------------------------------------------------------------- moleculas --- */
@@ -105,27 +105,27 @@ function renderTab(body, entity, tab) {
 function renderMoleculeTab(body, mol, tab) {
   if (tab === 'estructura') {
     body.appendChild(section('Identidad', el('dl', { class: 'a-kv' }, [
-      el('dt', { text: 'Formula' }), el('dd', { class: 'mono', html: formatFormula(mol.formula) }),
+      el('dt', { text: 'Fórmula' }), el('dd', { class: 'mono', html: formatFormula(mol.formula) }),
       el('dt', { text: 'Masa molar' }), el('dd', { text: mol.mw + ' g/mol' }),
       el('dt', { text: 'Familia' }), el('dd', {}, familyChip(mol.family)),
       el('dt', { text: 'Papel' }), el('dd', { text: (mol.role || []).map((r) => ROLE_LABEL[r] || r).join(', ') }),
-      el('dt', { text: 'Atomos' }), el('dd', { text: mol.heavyAtoms + ' pesados, ' + mol.atoms.el.length + ' con hidrogenos' }),
+      el('dt', { text: 'Átomos' }), el('dd', { text: mol.heavyAtoms + ' pesados, ' + mol.atoms.el.length + ' con hidrógenos' }),
     ])));
 
     if (mol.steroid) {
       const s = mol.steroid;
       const marks = [];
-      if (s.aromaticA) marks.push('anillo A aromatico');
+      if (s.aromaticA) marks.push('anillo A aromático');
       if (s.nor19) marks.push('19-nor (sin C19)');
-      body.appendChild(section('Nucleo esteroide', el('div', {}, [
+      body.appendChild(section('Núcleo esteroide', el('div', {}, [
         el('div', { class: 'a-muted', style: { marginBottom: '8px', fontSize: 'var(--fs-sm)' },
                     text: 'Ciclopentanoperhidrofenantreno: anillos A, B, C y D' + (marks.length ? ' — ' + marks.join(', ') : '') }),
         ringLegend(),
         s.substituents && s.substituents.length ? substituentTable(s.substituents) : null,
       ])));
     } else {
-      body.appendChild(section('Nucleo', el('div', { class: 'a-note',
-        text: 'Molecula no esteroidea: el coloreado por anillos A-D no aplica.' })));
+      body.appendChild(section('Núcleo', el('div', { class: 'a-note',
+        text: 'Molécula no esteroidea: el coloreado por anillos A-D no aplica.' })));
     }
 
     if (mol.groups && mol.groups.length) {
@@ -140,12 +140,12 @@ function renderMoleculeTab(body, mol, tab) {
     const consuming = reactionsConsuming(mol.id);
     const tissues = tissuesProducing(mol.id);
     if (!producing.length && !consuming.length) {
-      body.appendChild(emptyNote('Esta molecula no participa en la via de esteroidogenesis representada.'));
+      body.appendChild(emptyNote('Esta molécula no participa en la vía de esteroidogénesis representada.'));
     }
     if (producing.length) body.appendChild(section('Se forma a partir de', reactionList(producing, 'substrate')));
     if (consuming.length) body.appendChild(section('Se transforma en', reactionList(consuming, 'product')));
     if (tissues.length) {
-      body.appendChild(section('Donde se sintetiza', el('div', { class: 'a-list' }, tissues.map((t) =>
+      body.appendChild(section('Dónde se sintetiza', el('div', { class: 'a-list' }, tissues.map((t) =>
         el('a', { class: 'a-list__item', href: linkFor(t.id) }, [
           icon('scales'),
           el('div', { class: 'a-list__main' }, [
@@ -155,13 +155,13 @@ function renderMoleculeTab(body, mol, tab) {
         ])))));
     }
     body.appendChild(el('a', { class: 'a-btn a-btn--primary', href: '#/esteroidogenesis/mapa/' + mol.id.replace(':', '_') },
-      [icon('pathway'), el('span', { text: 'Ver en la via' })]));
+      [icon('pathway'), el('span', { text: 'Ver en la vía' })]));
     return;
   }
 
   if (tab === 'accion') {
     const organs = organsTargetedBy(mol.id);
-    if (!organs.length) body.appendChild(emptyNote('Sin organos blanco registrados para esta molecula.'));
+    if (!organs.length) body.appendChild(emptyNote('Sin órganos blanco registrados para esta molécula.'));
     for (const { organ, targets } of organs) {
       body.appendChild(section(entityName(organ.id), el('div', {}, targets.map((t) => el('div', { style: { marginBottom: '9px' } }, [
         el('div', { style: { display: 'flex', gap: '6px', alignItems: 'center', marginBottom: '2px' } }, [
@@ -186,15 +186,15 @@ function renderMoleculeTab(body, mol, tab) {
       if (p.contraindications) body.appendChild(section('Contraindicaciones', bullets(p.contraindications)));
       if (p.adverse) body.appendChild(section('Efectos adversos', bullets(p.adverse)));
       if (p.pk) {
-        body.appendChild(section('Farmacocinetica', el('dl', { class: 'a-kv' }, [
-          p.pk.route ? [el('dt', { text: 'Via' }), el('dd', { text: p.pk.route.join(', ') })] : null,
+        body.appendChild(section('Farmacocinética', el('dl', { class: 'a-kv' }, [
+          p.pk.route ? [el('dt', { text: 'Vía' }), el('dd', { text: p.pk.route.join(', ') })] : null,
           p.pk.bioavailability ? [el('dt', { text: 'Biodisponibilidad' }), el('dd', { text: p.pk.bioavailability })] : null,
           p.pk.halfLife ? [el('dt', { text: 'Semivida' }), el('dd', { text: p.pk.halfLife })] : null,
           p.pk.metabolism ? [el('dt', { text: 'Metabolismo' }), el('dd', { text: p.pk.metabolism })] : null,
         ].filter(Boolean).flat())));
       }
     } else {
-      body.appendChild(emptyNote('Ficha farmacologica pendiente para esta entrada.'));
+      body.appendChild(emptyNote('Ficha farmacológica pendiente para esta entrada.'));
     }
     const ix = interactionsOf(mol.id);
     if (ix.length) {
@@ -222,7 +222,7 @@ function renderMoleculeTab(body, mol, tab) {
       ].filter(Boolean)),
       el('div', { class: 'a-note', style: { marginTop: '10px' }, text: mol.conformer.note }),
     ])));
-    body.appendChild(section('Verificacion', el('div', {}, (mol.source || []).map((s) => el('div', { style: { marginBottom: '8px' } }, [
+    body.appendChild(section('Verificación', el('div', {}, (mol.source || []).map((s) => el('div', { style: { marginBottom: '8px' } }, [
       el('div', {}, [
         el('span', { class: 'a-badge' + (s.verified ? '' : ' a-badge--warn'), text: s.verified ? 'verificada' : 'pendiente' }),
         el('span', { class: 'a-src', style: { marginLeft: '6px' }, text: (s.db || '') + ' ' + (s.id || '') }),
@@ -264,7 +264,7 @@ function renderEnzymeTab(body, enz, tab) {
             el('div', { class: 'a-list__name', text: entityName(c.id) }),
             el('div', { class: 'a-list__meta', text: c.inheritance || '' }),
           ])])))
-      : emptyNote('Sin cuadros clinicos registrados.'));
+      : emptyNote('Sin cuadros clínicos registrados.'));
   } else {
     body.appendChild(sourceList(enz.source));
   }
@@ -286,7 +286,7 @@ function renderOrganTab(body, organ, tab) {
     body.appendChild(rows.length ? el('div', {}, rows.map((t) => el('div', { style: { marginBottom: '10px' } }, [
       el('div', { style: { fontWeight: 600, fontSize: 'var(--fs-md)' }, text: entityName(t.hormone) }),
       el('div', { style: { fontSize: 'var(--fs-md)' }, text: t.clinical }),
-    ]))) : emptyNote('Sin correlato clinico registrado.'));
+    ]))) : emptyNote('Sin correlato clínico registrado.'));
   } else {
     body.appendChild(sourceList(collectSources(organ)));
   }
@@ -333,7 +333,7 @@ function renderConditionTab(body, cond, tab) {
     }
     if (cond.treatment) body.appendChild(section('Tratamiento', el('p', { text: cond.treatment })));
     body.appendChild(el('a', { class: 'a-btn a-btn--primary', href: linkFor(cond.id) },
-      [icon('deficit'), el('span', { text: 'Simular el deficit' })]));
+      [icon('deficit'), el('span', { text: 'Simular el déficit' })]));
   } else if (tab === 'sintesis') {
     body.appendChild(section('Reacciones bloqueadas', el('div', { class: 'a-list' }, (cond.blocks || []).map((b) => {
       const rx = byId(b.reaction);
@@ -375,7 +375,7 @@ function ringLegend() {
 
 function substituentTable(subs) {
   return el('table', {}, [
-    el('thead', {}, el('tr', {}, [el('th', { text: 'Posicion' }), el('th', { text: 'Sustituyente' })])),
+    el('thead', {}, el('tr', {}, [el('th', { text: 'Posición' }), el('th', { text: 'Sustituyente' })])),
     el('tbody', {}, subs.map((s) => el('tr', {}, [
       el('td', { class: 'mono', text: s.position }),
       el('td', { text: s.group }),
@@ -400,7 +400,7 @@ function reactionList(reactions, side) {
 export function compartmentLabel(c) {
   return {
     mitocondria_membrana_interna: 'mitocondria',
-    reticulo_endoplasmico_liso: 'reticulo endoplasmico liso',
+    reticulo_endoplasmico_liso: 'retículo endoplásmico liso',
     citosol: 'citosol', membrana: 'membrana',
   }[c] || c || '—';
 }
@@ -420,7 +420,7 @@ export function resolveSource(source) {
 
 function sourceList(sources) {
   const list = (sources || []).map(resolveSource).filter(Boolean);
-  if (!list.length) return emptyNote('Sin fuentes registradas todavia.');
+  if (!list.length) return emptyNote('Sin fuentes registradas todavía.');
   return el('div', {}, list.map((s) => el('div', { style: { marginBottom: '9px' } }, [
     el('div', { class: 'a-src' }, [
       el('span', { class: 'a-badge' + (s.verified ? '' : ' a-badge--warn'), text: s.verified ? 'verificada' : 'pendiente' }),

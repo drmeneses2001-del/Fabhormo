@@ -24,15 +24,15 @@ const EDGE_STYLE = {
   precursor: { color: 'enz-red', dash: null, label: 'precursor de' },
   antagonismo: { color: 'up', dash: [2, 3], label: 'antagoniza' },
   modulacion_selectiva: { color: 'fam-farmaco', dash: [7, 3], label: 'modula' },
-  sinergia_clinica: { color: 'enz-sulf', dash: [5, 5], label: 'relacion clinica' },
-  otro: { color: 'ink-3', dash: [2, 4], label: 'relacion' },
+  sinergia_clinica: { color: 'enz-sulf', dash: [5, 5], label: 'relación clínica' },
+  otro: { color: 'ink-3', dash: [2, 4], label: 'relación' },
 };
 
 const FILTERS = [
   { value: 'todo', label: 'Todo' },
   { value: 'receptor', label: 'Receptores' },
   { value: 'enzima', label: 'Enzimas' },
-  { value: 'farmaco', label: 'Farmacos' },
+  { value: 'farmaco', label: 'Fármacos' },
 ];
 
 let stage = null;
@@ -212,9 +212,9 @@ function renderPanel() {
   if (!focusId) {
     panelBody.appendChild(el('div', { class: 'a-note',
       text: 'Selecciona un nodo para aislar sus relaciones. Las flechas continuas son agonismo o '
-          + 'inhibicion directa, las punteadas antagonismo o modulacion selectiva.' }));
+          + 'inhibición directa, las punteadas antagonismo o modulación selectiva.' }));
     panelBody.appendChild(el('div', { class: 'a-section', style: { marginTop: '14px' } }, [
-      el('div', { class: 'a-section__title', text: 'Tipos de relacion' }),
+      el('div', { class: 'a-section__title', text: 'Tipos de relación' }),
       ...Object.entries(EDGE_STYLE).filter(([, s], i, arr) => arr.findIndex(([, x]) => x.label === s.label) === i)
         .map(([, s]) => el('div', { class: 'a-legend__row' }, [
           el('span', { class: 'a-legend__swatch', style: { background: token(s.color), height: '2px' } }),
@@ -229,7 +229,7 @@ function renderPanel() {
 
   const related = graph.edges.filter((e) => e.a === focusId || e.b === focusId);
   panelBody.appendChild(el('div', { class: 'a-src', style: { marginBottom: '12px' },
-    text: related.length + (related.length === 1 ? ' relacion' : ' relaciones') }));
+    text: related.length + (related.length === 1 ? ' relación' : ' relaciones') }));
   for (const e of related) {
     const other = e.a === focusId ? e.b : e.a;
     const style = EDGE_STYLE[e.kind] || EDGE_STYLE.otro;
@@ -252,12 +252,12 @@ function renderPanel() {
 }
 
 function kindLabel(kind) {
-  return { receptor: 'Receptor', enzima: 'Enzima', farmaco: 'Farmaco', hormona: 'Hormona' }[kind] || '';
+  return { receptor: 'Receptor', enzima: 'Enzima', farmaco: 'Fármaco', hormona: 'Hormona' }[kind] || '';
 }
 
 function buildBar() {
   setStageBar([
-    crumbs([{ label: 'Interaccion bioquimica', href: '#/interacciones/mapa' },
+    crumbs([{ label: 'Interacción bioquímica', href: '#/interacciones/mapa' },
             focusId ? { label: entityName(focusId), current: true } : null].filter(Boolean)),
     toolbar([
       el('div', { style: { display: 'flex', gap: '4px' } }, FILTERS.map((f) => el('button', {

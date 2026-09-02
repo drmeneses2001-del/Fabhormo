@@ -28,7 +28,7 @@ let stage = null;
 
 export function mount(host) {
   setStageBar([]);
-  stage = mountStage(host, { label: 'Constelacion de la esteroidogenesis',
+  stage = mountStage(host, { label: 'Constelación de la esteroidogénesis',
     engine: { autoSpin: true, quality: 3 } });
   stage.engine.spinSpeed = 0.1;
   stage.engine.renderer.fogStrength = 0.45;
@@ -91,20 +91,20 @@ function overlay() {
   }, el('div', { style: { maxWidth: '620px', pointerEvents: 'auto' } }, [
     el('div', { style: { fontFamily: 'var(--font-serif)', fontSize: 'var(--fs-3xl)', lineHeight: '1.05',
                          letterSpacing: '-0.015em', marginBottom: '10px' },
-                text: 'De una sola molecula salen todas' }),
+                text: 'De una sola molécula salen todas' }),
     el('p', { style: { fontSize: 'var(--fs-lg)', color: 'var(--ink-2)', marginBottom: '18px' },
-              text: 'El colesterol es el origen comun de androgenos, estrogenos, gestagenos y '
+              text: 'El colesterol es el origen comun de andrógenos, estrógenos, gestágenos y '
                   + 'corticoides. Este atlas sigue esa cascada paso a paso, enzima a enzima, hasta '
-                  + 'el organo donde cada hormona actua.' }),
+                  + 'el órgano donde cada hormona actua.' }),
     el('div', { style: { display: 'flex', gap: '10px', flexWrap: 'wrap' } }, [
       el('a', { class: 'a-btn a-btn--primary', href: tour ? '#/esteroidogenesis/recorrido/' + tour.step : '#/esteroidogenesis/recorrido/1' },
-        [icon('tour'), el('span', { text: tour ? 'Continuar el recorrido (paso ' + tour.step + ')' : 'Recorrer la esteroidogenesis' })]),
+        [icon('tour'), el('span', { text: tour ? 'Continuar el recorrido (paso ' + tour.step + ')' : 'Recorrer la esteroidogénesis' })]),
       el('a', { class: 'a-btn', href: '#/esteroidogenesis/mapa' }, [icon('pathway'), el('span', { text: 'Explorar el mapa' })]),
       el('a', { class: 'a-btn', href: '#/atlas' }, [icon('molecule'), el('span', { text: 'Atlas molecular' })]),
     ]),
     el('div', { class: 'a-src', style: { marginTop: '14px' },
                 text: all('molecules').filter((m) => m.atoms && m.atoms.xyz && m.atoms.xyz.length).length
-                    + ' moleculas con estructura tridimensional · '
+                    + ' moléculas con estructura tridimensional · '
                     + 'gira, acerca y selecciona cualquier nodo' }),
   ]));
 }

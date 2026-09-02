@@ -10,9 +10,9 @@ import { resolveSource } from '../../ui/inspector.js';
 
 const MODULES = [
   { value: 'todos', label: 'Todos' },
-  { value: 'esteroidogenesis', label: 'Esteroidogenesis' },
-  { value: 'organos', label: 'Organos blanco' },
-  { value: 'farmacos', label: 'Farmacologia' },
+  { value: 'esteroidogenesis', label: 'Esteroidogénesis' },
+  { value: 'organos', label: 'Órganos blanco' },
+  { value: 'farmacos', label: 'Farmacología' },
   { value: 'ciclo', label: 'Ciclo' },
   { value: 'laboratorio', label: 'Laboratorio' },
   { value: 'atlas', label: 'Estructura molecular' },
@@ -129,7 +129,7 @@ export function mount(root) {
   buildDeck();
 
   setStageBar([
-    crumbs([{ label: 'Autoevaluacion', current: true }]),
+    crumbs([{ label: 'Autoevaluación', current: true }]),
     toolbar([el('label', { class: 'a-field' }, [
       el('span', { text: 'Tema' }),
       el('select', { onChange: (e) => { filter = e.target.value; buildDeck(); render(); } },
@@ -140,6 +140,6 @@ export function mount(root) {
   host = el('div', { class: 'a-view a-view--scroll' });
   root.appendChild(host);
   render();
-  announce('Autoevaluacion con ' + deck.length + ' preguntas');
+  announce('Autoevaluación con ' + deck.length + ' preguntas');
   return { unmount() { host = null; } };
 }

@@ -22,7 +22,7 @@ function rebuild(options) {
   if (!options || !options.keepCamera) frameAll();
   stage.engine.requestRender();
   updateLegend();
-  announce('Mapa de la via con ' + built.molecules.size + ' metabolitos y ' + built.reactions.length + ' reacciones');
+  announce('Mapa de la vía con ' + built.molecules.size + ' metabolitos y ' + built.reactions.length + ' reacciones');
 }
 
 function frameAll() {
@@ -50,8 +50,8 @@ function updateLegend() {
   if (!legendNode) return;
   clear(legendNode);
   const families = [
-    ['Precursor', familyColor('precursor')], ['Gestageno', familyColor('gestageno')],
-    ['Androgeno', familyColor('androgeno')], ['Estrogeno', familyColor('estrogeno')],
+    ['Precursor', familyColor('precursor')], ['Gestágeno', familyColor('gestageno')],
+    ['Andrógeno', familyColor('androgeno')], ['Estrógeno', familyColor('estrogeno')],
     ['Glucocorticoide', familyColor('glucocorticoide')], ['Mineralocorticoide', familyColor('mineralocorticoide')],
   ];
   const enzymes = [['CYP', token('enz-cyp')], ['HSD', token('enz-hsd')],
@@ -72,7 +72,7 @@ function updateLegend() {
     el('span', { text: 'Mitocondria' })]));
   legendNode.appendChild(el('div', { class: 'a-legend__row' }, [
     el('span', { style: { color: token('comp-rel'), width: '11px', textAlign: 'center' }, text: '●' }),
-    el('span', { text: 'Reticulo endoplasmico liso' })]));
+    el('span', { text: 'Retículo endoplásmico liso' })]));
   if (tissue) {
     legendNode.appendChild(el('div', { class: 'a-note', style: { marginTop: '9px', fontSize: 'var(--fs-xs)' },
       text: 'Atenuado: la enzima no se expresa en ' + entityName(tissue) + '.' }));
@@ -82,7 +82,7 @@ function updateLegend() {
 function buildBar() {
   const groups = pathwayGroups();
   setStageBar([
-    crumbs([{ label: 'Esteroidogenesis' }, { label: 'Mapa de la via', current: true }]),
+    crumbs([{ label: 'Esteroidogénesis' }, { label: 'Mapa de la vía', current: true }]),
     toolbar([
       el('div', { style: { display: 'flex', gap: '4px', flexWrap: 'wrap' } }, groups
         .filter((g) => g.collapsed || g.id === 'grp:corticoide')
@@ -115,10 +115,10 @@ function tissuePanel() {
     groupsByOrgan.get(t.organ).push(t);
   }
   const ORGAN_LABEL = {
-    'org:testiculo': 'Testiculo', 'org:ovario': 'Ovario', 'org:suprarrenal': 'Suprarrenal',
+    'org:testiculo': 'Testículo', 'org:ovario': 'Ovario', 'org:suprarrenal': 'Suprarrenal',
     'org:placenta': 'Placenta', 'org:adiposo': 'Tejido adiposo', 'org:piel': 'Piel',
-    'org:genitales_externos': 'Genitales externos', 'org:prostata': 'Prostata',
-    'org:mama': 'Mama', 'org:higado': 'Higado', 'org:cerebro': 'Cerebro', 'org:hueso': 'Hueso',
+    'org:genitales_externos': 'Genitales externos', 'org:prostata': 'Próstata',
+    'org:mama': 'Mama', 'org:higado': 'Hígado', 'org:cerebro': 'Cerebro', 'org:hueso': 'Hueso',
   };
   for (const [organ, items] of groupsByOrgan) {
     list.appendChild(el('div', { class: 'a-rail__grouptitle', style: { padding: '7px 8px 3px' },
@@ -155,7 +155,7 @@ export function mount(host, ctx) {
   if (Array.isArray(storedGroups)) collapsed = new Set(storedGroups);
 
   stage = mountStage(host, {
-    label: 'Mapa interactivo de la esteroidogenesis',
+    label: 'Mapa interactivo de la esteroidogénesis',
     panel: tissuePanel(),
     engine: { autoSpin: false, quality: 3 },
   });

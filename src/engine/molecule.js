@@ -238,8 +238,8 @@ export function structuralDiff(recordA, recordB) {
                   b: recordB.steroid.nor19 ? 'ausente (19-nor)' : 'metilo' });
     }
     if (recordA.steroid.aromaticA !== recordB.steroid.aromaticA) {
-      rows.push({ position: 'Anillo A', a: recordA.steroid.aromaticA ? 'aromatico' : 'no aromatico',
-                  b: recordB.steroid.aromaticA ? 'aromatico' : 'no aromatico' });
+      rows.push({ position: 'Anillo A', a: recordA.steroid.aromaticA ? 'aromatico' : 'no aromático',
+                  b: recordB.steroid.aromaticA ? 'aromatico' : 'no aromático' });
     }
   }
   return rows;

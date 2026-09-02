@@ -23,7 +23,7 @@ function render(root) {
 
   panel.appendChild(el('div', { style: { padding: '11px 12px 8px', borderBottom: '1px solid var(--line)' } }, [
     el('div', { class: 'a-section__title', style: { marginBottom: '3px' }, text: 'Perfil esperado' }),
-    el('div', { class: 'a-src', text: 'Elige un cuadro para ver que se espera encontrar.' }),
+    el('div', { class: 'a-src', text: 'Elige un cuadro para ver qué se espera encontrar.' }),
   ]));
   const list = el('div', { class: 'a-list', style: { overflowY: 'auto', flex: '1', padding: '6px' } });
   list.appendChild(el('button', {
@@ -45,9 +45,9 @@ function render(root) {
   if (!selected) {
     doc.appendChild(el('h1', { text: 'Rangos de referencia' }));
     doc.appendChild(el('div', { class: 'a-note', style: { margin: '10px 0 18px', maxWidth: '66ch' },
-      text: 'Los intervalos son orientativos y dependen del metodo de medida, del laboratorio, del '
+      text: 'Los intervalos son orientativos y dependen del método de medida, del laboratorio, del '
           + 'sexo, de la edad y del momento del ciclo. Se dan como referencia de magnitud y de '
-          + 'sentido, no como criterio diagnostico.' }));
+          + 'sentido, no como criterio diagnóstico.' }));
     for (const l of all('labs')) {
       doc.appendChild(el('div', { class: 'a-section' }, [
         el('div', { style: { display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' } }, [
@@ -71,7 +71,7 @@ function render(root) {
   } else {
     const c = byId(selected);
     const rows = profileFor(c);
-    doc.appendChild(el('div', { class: 'a-inspector__kicker', text: 'Perfil analitico esperado' }));
+    doc.appendChild(el('div', { class: 'a-inspector__kicker', text: 'Perfil analítico esperado' }));
     doc.appendChild(el('h1', { text: c.names.es }));
     doc.appendChild(el('div', { class: 'a-muted', style: { marginBottom: '16px' },
       text: (c.gene ? 'gen ' + c.gene : '') + (c.inheritance ? ' · ' + c.inheritance : '') }));
@@ -82,13 +82,13 @@ function render(root) {
         el('td', {}, el('a', { href: linkFor(r.mol), text: entityName(r.mol) })),
         el('td', { class: 'mono', style: { color: dirColor(r.expected) }, text: DIRECTION_LABEL[r.expected] }),
         el('td', { class: 'mono', style: { color: dirColor(r.computed) }, text: DIRECTION_LABEL[r.computed] || '—' }),
-        el('td', { text: r.marker ? 'marcador diagnostico' : '' }),
+        el('td', { text: r.marker ? 'marcador diagnóstico' : '' }),
       ]))),
     ]));
     const labs = (c.labs || []).map((id) => byId(id)).filter(Boolean);
     if (labs.length) {
       doc.appendChild(el('div', { class: 'a-section', style: { marginTop: '18px' } }, [
-        el('div', { class: 'a-section__title', text: 'Que pedir' }),
+        el('div', { class: 'a-section__title', text: 'Qué pedir' }),
         el('div', { class: 'a-list' }, labs.map((l) => el('div', { class: 'a-list__item' }, [
           icon('lab'), el('div', { class: 'a-list__main' }, [
             el('div', { class: 'a-list__name', text: l.names.es }),
@@ -97,7 +97,7 @@ function render(root) {
     }
     doc.appendChild(el('a', { class: 'a-btn a-btn--primary', style: { marginTop: '16px' },
       href: '#/esteroidogenesis/deficit/' + slugFromId(c.id) },
-      [icon('deficit'), el('span', { text: 'Ver el bloqueo en la via' })]));
+      [icon('deficit'), el('span', { text: 'Ver el bloqueo en la vía' })]));
   }
   body.appendChild(doc);
   view.appendChild(panel);

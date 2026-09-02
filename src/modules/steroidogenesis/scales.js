@@ -17,11 +17,11 @@ import { token } from '../../core/theme.js';
 
 const SCALES = [
   { level: 0, label: 'Cuerpo', hint: '~1,7 m' },
-  { level: 1, label: 'Organo', hint: '1–10 cm' },
-  { level: 2, label: 'Celula', hint: '~20 µm' },
-  { level: 3, label: 'Organulo', hint: '~1 µm' },
+  { level: 1, label: 'Órgano', hint: '1–10 cm' },
+  { level: 2, label: 'Célula', hint: '~20 µm' },
+  { level: 3, label: 'Orgánulo', hint: '~1 µm' },
   { level: 4, label: 'Enzima', hint: '~8 nm' },
-  { level: 5, label: 'Molecula', hint: '~1 nm' },
+  { level: 5, label: 'Molécula', hint: '~1 nm' },
 ];
 
 let stage = null;
@@ -60,7 +60,7 @@ function buildBody(scene) {
     stroke: line, fill: token('surface-2'), lineWidth: 1.4, scaleBand: band(0),
     layer: -4, id: 'body:outline',
   }));
-  scene.add(labelNode('Esquema, no anatomia a escala', {
+  scene.add(labelNode('Esquema, no anatomía a escala', {
     position: [0, -6, z], size: 11, color: token('ink-3'), always: true,
     scaleBand: band(0), layer: 2, id: 'body:disclaimer',
   }));
@@ -175,7 +175,7 @@ function buildCell(scene) {
     stroke: token('ink-3'), fill: null, lineWidth: 1.2, scaleBand: band(2), layer: -2,
     position: [-13, 9, z - 2], id: 'cell:nucleus',
   }));
-  scene.add(labelNode('Nucleo', { position: [-13, -1, z], size: 10, color: token('ink-3'),
+  scene.add(labelNode('Núcleo', { position: [-13, -1, z], size: 10, color: token('ink-3'),
     always: true, scaleBand: band(2), layer: 3, id: 'cell:nucleuslbl' }));
 
   // Mitocondrias y reticulo liso, con las enzimas que el tejido expresa en cada uno.
@@ -201,7 +201,7 @@ function buildCell(scene) {
       position: [-8, -18, z - 1], scaleBand: band(2), layer: -2, id: 'cell:er' + i,
     }));
   }
-  scene.add(labelNode('Reticulo endoplasmico liso · ' + inRel.length + ' enzimas', {
+  scene.add(labelNode('Retículo endoplásmico liso · ' + inRel.length + ' enzimas', {
     position: [-8, -27, z], size: 10, color: rel, always: true,
     scaleBand: band(2), layer: 3, id: 'cell:erlbl' }));
 }
@@ -239,7 +239,7 @@ function buildOrganelle(scene) {
       position: [x, y - 5.6, z], size: 11, weight: 600, color: token('enz-cyp'), always: true,
       scaleBand: band(3), layer: 3, id: 'orgn:enzlbl' + enz.id }));
   });
-  scene.add(labelNode('Aqui trabajan las enzimas mitocondriales del tejido', {
+  scene.add(labelNode('Aquí trabajan las enzimas mitocondriales del tejido', {
     position: [0, -22, z], size: 10, color: token('ink-3'), always: true,
     scaleBand: band(3), layer: 3, id: 'orgn:hint' }));
 }
@@ -263,7 +263,7 @@ function buildEnzyme(scene) {
   scene.add(labelNode('gen ' + enzyme.gene + ' · ' + compartmentLabel(enzyme.compartment), {
     position: [0, 22, z], size: 11, color: token('ink-3'), always: true,
     scaleBand: band(4), layer: 3, id: 'enz:sub' }));
-  scene.add(labelNode('Representacion esquematica: no hay estructura cristalografica cargada', {
+  scene.add(labelNode('Representación esquemática: no hay estructura cristalográfica cargada', {
     position: [0, -25, z], size: 10, color: token('ink-3'), always: true,
     scaleBand: band(4), layer: 3, id: 'enz:disclaimer' }));
 
@@ -345,8 +345,8 @@ function renderCrumbs() {
   const enzyme = t && mainEnzyme(t);
   const mol = t && byId((t.produces || [])[0]);
   const labels = [
-    'Cuerpo', organ ? organ.names.es : 'Organo', t ? t.cell : 'Celula',
-    'Mitocondria', enzyme ? enzyme.names.corto : 'Enzima', mol ? mol.names.corto : 'Molecula',
+    'Cuerpo', organ ? organ.names.es : 'Órgano', t ? t.cell : 'Célula',
+    'Mitocondria', enzyme ? enzyme.names.corto : 'Enzima', mol ? mol.names.corto : 'Molécula',
   ];
   labels.forEach((label, i) => {
     if (i) crumbHost.appendChild(el('span', { class: 'a-crumbs__sep', text: '›' }));
@@ -381,8 +381,8 @@ function buildBar() {
 function tissuePanel() {
   const panel = el('div', { style: { display: 'flex', flexDirection: 'column', height: '100%' } });
   panel.appendChild(el('div', { style: { padding: '11px 12px 8px', borderBottom: '1px solid var(--line)' } }, [
-    el('div', { class: 'a-section__title', style: { marginBottom: '3px' }, text: 'Donde ocurre' }),
-    el('div', { class: 'a-src', text: 'Elige un tejido y baja del cuerpo a la molecula.' }),
+    el('div', { class: 'a-section__title', style: { marginBottom: '3px' }, text: 'Dónde ocurre' }),
+    el('div', { class: 'a-src', text: 'Elige un tejido y baja del cuerpo a la molécula.' }),
   ]));
   const list = el('div', { class: 'a-list', style: { overflowY: 'auto', flex: '1', padding: '6px' } });
   for (const t of all('tissues')) {
@@ -408,7 +408,7 @@ export function mount(host, ctx) {
   level = tissue ? 1 : 0;
 
   stage = mountStage(host, {
-    label: 'Recorrido por escalas, del cuerpo a la molecula',
+    label: 'Recorrido por escalas, del cuerpo a la molécula',
     panel: tissuePanel(),
     engine: { autoSpin: false, quality: 3 },
   });

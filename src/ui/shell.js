@@ -7,30 +7,30 @@ import { openSearch } from './search-dialog.js';
 /** Capitulo insignia y laminas. El orden y el tratamiento visual distinto del
  *  capitulo son parte del diseno: la esteroidogenesis es la puerta de entrada. */
 export const CHAPTER = {
-  num: 'Capitulo I',
-  title: 'Esteroidogenesis',
+  num: 'Capítulo I',
+  title: 'Esteroidogénesis',
   desc: 'Del colesterol a cada hormona sexual, paso a paso',
   route: '#/esteroidogenesis/mapa',
   views: [
-    { route: '#/esteroidogenesis/mapa', label: 'Mapa de la via', icon: 'pathway' },
-    { route: '#/esteroidogenesis/escalas', label: 'Donde ocurre', icon: 'scales' },
-    { route: '#/esteroidogenesis/paso', label: 'Paso enzimatico', icon: 'step' },
-    { route: '#/esteroidogenesis/deficit', label: 'Simulador de deficits', icon: 'deficit' },
+    { route: '#/esteroidogenesis/mapa', label: 'Mapa de la vía', icon: 'pathway' },
+    { route: '#/esteroidogenesis/escalas', label: 'Dónde ocurre', icon: 'scales' },
+    { route: '#/esteroidogenesis/paso', label: 'Paso enzimático', icon: 'step' },
+    { route: '#/esteroidogenesis/deficit', label: 'Simulador de déficits', icon: 'deficit' },
     { route: '#/esteroidogenesis/recorrido/1', label: 'Recorrido guiado', icon: 'tour' },
   ],
 };
 
 export const MODULES = [
   { route: '#/atlas', label: 'Atlas molecular', icon: 'molecule' },
-  { route: '#/organos', label: 'Organos blanco', icon: 'body' },
-  { route: '#/interacciones/mapa', label: 'Interaccion bioquimica', icon: 'link' },
+  { route: '#/organos', label: 'Órganos blanco', icon: 'body' },
+  { route: '#/interacciones/mapa', label: 'Interacción bioquímica', icon: 'link' },
   { route: '#/interacciones/comparar', label: 'Comparador', icon: 'compare' },
   { route: '#/receptores', label: 'Receptores', icon: 'receptor' },
   { route: '#/ciclo', label: 'Ciclo hormonal', icon: 'cycle' },
   { route: '#/laboratorio', label: 'Laboratorio', icon: 'lab' },
-  { route: '#/farmacos', label: 'Interacciones farmacologicas', icon: 'pill' },
-  { route: '#/elegibilidad', label: 'Elegibilidad clinica', icon: 'check' },
-  { route: '#/autoevaluacion', label: 'Autoevaluacion', icon: 'quiz' },
+  { route: '#/farmacos', label: 'Interacciones farmacológicas', icon: 'pill' },
+  { route: '#/elegibilidad', label: 'Elegibilidad clínica', icon: 'check' },
+  { route: '#/autoevaluacion', label: 'Autoevaluación', icon: 'quiz' },
 ];
 
 export function buildRail() {
@@ -48,7 +48,7 @@ export function buildRail() {
   ]);
   chapterHost.appendChild(chapter);
 
-  modulesHost.appendChild(el('div', { class: 'a-rail__grouptitle', text: 'Laminas' }));
+  modulesHost.appendChild(el('div', { class: 'a-rail__grouptitle', text: 'Láminas' }));
   for (const m of MODULES) {
     modulesHost.appendChild(el('a', { class: 'a-rail__item', href: m.route, 'data-route': m.route },
       [icon(m.icon), el('span', { class: 'a-rail__label', text: m.label })]));

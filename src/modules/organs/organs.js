@@ -18,7 +18,7 @@ const STAGES = [
   { value: 'fetal', label: 'Fetal' },
   { value: 'pubertad', label: 'Pubertad' },
   { value: 'adulto', label: 'Adulto' },
-  { value: 'gestacion', label: 'Gestacion' },
+  { value: 'gestacion', label: 'Gestación' },
   { value: 'climaterio', label: 'Climaterio' },
 ];
 
@@ -145,7 +145,7 @@ function hormonePanel() {
   list.appendChild(el('button', {
     class: 'a-list__item', 'data-active': hormone ? null : 'true', 'data-h': 'ninguna',
     onClick: () => { hormone = null; go('#/organos'); },
-  }, [el('div', { class: 'a-list__main' }, [el('div', { class: 'a-list__name', text: 'Ver todos los organos' })])]));
+  }, [el('div', { class: 'a-list__main' }, [el('div', { class: 'a-list__name', text: 'Ver todos los órganos' })])]));
 
   for (const id of HORMONES) {
     const m = byId(id);
@@ -231,7 +231,7 @@ function renderPanel() {
   }
 
   panelBody.appendChild(el('div', { class: 'a-note',
-    text: 'Elige una hormona en la lista para iluminar sus organos blanco, o selecciona un organo '
+    text: 'Elige una hormona en la lista para iluminar sus órganos blanco, o selecciona un órgano '
         + 'en el esquema para ver que hormonas actuan sobre el.' }));
 }
 
@@ -240,7 +240,7 @@ function renderPanel() {
 function buildBar() {
   const receptors = all('receptors');
   setStageBar([
-    crumbs([{ label: 'Organos blanco', href: '#/organos' },
+    crumbs([{ label: 'Órganos blanco', href: '#/organos' },
             hormone ? { label: entityName(hormone), current: true } : null,
             organFocus ? { label: entityName(organFocus), current: true } : null].filter(Boolean)),
     toolbar([
@@ -275,7 +275,7 @@ export function mount(host, ctx) {
   }
 
   stage = mountStage(host, {
-    label: 'Esquema del cuerpo con los organos blanco',
+    label: 'Esquema del cuerpo con los órganos blanco',
     panel: hormonePanel(),
     engine: { autoSpin: false, quality: 3 },
   });
@@ -308,7 +308,7 @@ export function mount(host, ctx) {
 
   buildBar();
   build();
-  announce(hormone ? 'Territorios de ' + entityName(hormone) : 'Esquema de organos blanco');
+  announce(hormone ? 'Territorios de ' + entityName(hormone) : 'Esquema de órganos blanco');
 
   return {
     unmount() {

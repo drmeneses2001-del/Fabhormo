@@ -10,12 +10,12 @@ import { elementColor, familyColor } from '../../engine/molecule.js';
 import { token } from '../../core/theme.js';
 
 const KIND_LABEL = {
-  hidroxilacion: 'Hidroxilacion', escision_cadena: 'Escision de la cadena lateral',
-  oxidacion_3b_isomerizacion: 'Oxidacion 3β e isomerizacion Δ5 a Δ4',
-  reduccion_17ceto: 'Reduccion del 17-ceto', oxidacion_17oh: 'Oxidacion del 17β-OH',
-  a5_reduccion: '5α-reduccion', aromatizacion: 'Aromatizacion',
-  sulfatacion: 'Sulfatacion', desulfatacion: 'Desulfatacion',
-  '11b_hidroxilacion': '11β-hidroxilacion', '18_oxidacion': 'Oxidacion en C18', otro: 'Transformacion',
+  hidroxilacion: 'Hidroxilación', escision_cadena: 'Escisión de la cadena lateral',
+  oxidacion_3b_isomerizacion: 'Oxidación 3β e isomerización Δ5 a Δ4',
+  reduccion_17ceto: 'Reducción del 17-ceto', oxidacion_17oh: 'Oxidación del 17β-OH',
+  a5_reduccion: '5α-reducción', aromatizacion: 'Aromatización',
+  sulfatacion: 'Sulfatación', desulfatacion: 'Desulfatación',
+  '11b_hidroxilacion': '11β-hidroxilacion', '18_oxidacion': 'Oxidación en C18', otro: 'Transformación',
 };
 
 let stage = null;
@@ -82,7 +82,7 @@ function compartmentBackdrop(scene, compartment) {
       stroke: color, lineWidth: 1.1, layer: -4, id: 'comp:inner', opacity: 0.7, dash: null,
     }));
   }
-  scene.add(labelNode(isMito ? 'Mitocondria · membrana interna' : 'Reticulo endoplasmico liso', {
+  scene.add(labelNode(isMito ? 'Mitocondria · membrana interna' : 'Retículo endoplásmico liso', {
     position: [0, -h * (isMito ? 1 : 0.62) - 2.6, z], size: 11, weight: 600,
     color, always: true, layer: -3, id: 'comp:lbl', halo: true,
   }));
@@ -126,7 +126,7 @@ function infoPanel() {
   const panel = el('div', { style: { display: 'flex', flexDirection: 'column', height: '100%', overflowY: 'auto' } });
   const body = el('div', { style: { padding: '14px' } });
 
-  body.appendChild(el('div', { class: 'a-inspector__kicker', text: KIND_LABEL[reaction.kind] || 'Reaccion' }));
+  body.appendChild(el('div', { class: 'a-inspector__kicker', text: KIND_LABEL[reaction.kind] || 'Reacción' }));
   body.appendChild(el('h2', { style: { fontSize: 'var(--fs-lg)', margin: '3px 0 10px', lineHeight: '1.25' } }, [
     el('a', { href: linkFor(sub.id), text: sub.names.es, style: { color: familyColor(sub.family), textDecoration: 'none' } }),
     el('span', { text: ' → ' }),
@@ -146,7 +146,7 @@ function infoPanel() {
   ]));
 
   body.appendChild(el('div', { class: 'a-section' }, [
-    el('div', { class: 'a-section__title', text: 'Que cambia' }),
+    el('div', { class: 'a-section__title', text: 'Qué cambia' }),
     el('div', { style: { display: 'flex', gap: '10px', flexWrap: 'wrap', fontSize: 'var(--fs-md)' } }, [
       changeChip(morph ? morph.entries.filter((e) => e.kind === 'added').length : 0, 'entran', token('ring-c')),
       changeChip(morph ? morph.entries.filter((e) => e.kind === 'removed').length : 0, 'salen', token('up')),
@@ -166,7 +166,7 @@ function infoPanel() {
   const tissues = (reaction.tissues || []).map((t) => byId(t)).filter(Boolean);
   if (tissues.length) {
     body.appendChild(el('div', { class: 'a-section' }, [
-      el('div', { class: 'a-section__title', text: 'Donde ocurre' }),
+      el('div', { class: 'a-section__title', text: 'Dónde ocurre' }),
       el('div', { class: 'a-list' }, tissues.map((t) => el('a', {
         class: 'a-list__item', href: '#/esteroidogenesis/escalas/' + slugFromId(t.id),
       }, [icon('scales'), el('div', { class: 'a-list__main' }, [
@@ -217,11 +217,11 @@ function changeChip(n, label, color) {
 function buildBar() {
   const controls = el('div', { style: { display: 'flex', alignItems: 'center', gap: '8px' } });
   const playBtn = el('button', {
-    class: 'a-btn a-btn--icon', title: 'Reproducir o pausar la transformacion',
+    class: 'a-btn a-btn--icon', title: 'Reproducir o pausar la transformación',
     onClick: () => { playing = !playing; clear(playBtn); playBtn.appendChild(icon(playing ? 'pause' : 'play')); },
   }, icon('pause'));
   const slider = el('input', {
-    type: 'range', min: '0', max: '1000', value: '0', 'aria-label': 'Avance de la reaccion',
+    type: 'range', min: '0', max: '1000', value: '0', 'aria-label': 'Avance de la reacción',
     style: { width: '190px' },
     onInput: (e) => { playing = false; clear(playBtn); playBtn.appendChild(icon('play')); setProgress(Number(e.target.value) / 1000); },
   });
@@ -232,8 +232,8 @@ function buildBar() {
   stage.engine.onBeforeRender = sync;
 
   setStageBar([
-    crumbs([{ label: 'Esteroidogenesis', href: '#/esteroidogenesis/mapa' },
-            { label: 'Paso enzimatico', current: true }]),
+    crumbs([{ label: 'Esteroidogénesis', href: '#/esteroidogenesis/mapa' },
+            { label: 'Paso enzimático', current: true }]),
     toolbar([
       controls,
       buttonGroup([
@@ -255,13 +255,13 @@ export function mount(host, ctx) {
   reaction = chooseReaction(wanted);
   if (!reaction) {
     host.appendChild(el('div', { class: 'a-empty' }, [
-      el('div', { class: 'a-empty__title', text: 'Sin reaccion seleccionada' }),
+      el('div', { class: 'a-empty__title', text: 'Sin reacción seleccionada' }),
       el('a', { class: 'a-btn', href: '#/esteroidogenesis/mapa', text: 'Volver al mapa' }),
     ]));
     return {};
   }
 
-  stage = mountStage(host, { label: 'Transformacion del sustrato en producto',
+  stage = mountStage(host, { label: 'Transformación del sustrato en producto',
     engine: { autoSpin: false, quality: 3 } });
   stage.engine.renderer.fogStrength = 0.3;
   progress = 0; direction = 1; playing = true;
@@ -273,8 +273,8 @@ export function mount(host, ctx) {
 
   if (!ok) {
     stage.canvasWrap.appendChild(el('div', { class: 'a-empty' }, [
-      el('div', { class: 'a-empty__title', text: 'Sin correspondencia atomica' }),
-      el('div', { class: 'a-muted', text: 'Este paso necesita la conformacion 3D de las dos moleculas.' }),
+      el('div', { class: 'a-empty__title', text: 'Sin correspondencia atómica' }),
+      el('div', { class: 'a-muted', text: 'Este paso necesita la conformación 3D de las dos moléculas.' }),
     ]));
   }
 

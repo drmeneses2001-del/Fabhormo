@@ -10,14 +10,14 @@ import { prepareMolecule, colorAtoms, computeSurface, familyColor } from '../../
 
 const FAMILIES = [
   { value: 'todas', label: 'Todas' },
-  { value: 'androgeno', label: 'Androgenos' },
-  { value: 'estrogeno', label: 'Estrogenos' },
-  { value: 'gestageno', label: 'Gestagenos' },
-  { value: 'progestageno_sintetico', label: 'Progestagenos' },
+  { value: 'androgeno', label: 'Andrógenos' },
+  { value: 'estrogeno', label: 'Estrógenos' },
+  { value: 'gestageno', label: 'Gestágenos' },
+  { value: 'progestageno_sintetico', label: 'Progestágenos' },
   { value: 'precursor', label: 'Precursores' },
   { value: 'glucocorticoide', label: 'Glucocorticoides' },
   { value: 'mineralocorticoide', label: 'Mineralocorticoides' },
-  { value: 'antiandrogeno', label: 'Antiandrogenos' },
+  { value: 'antiandrogeno', label: 'Antiandrógenos' },
   { value: 'antiestrogeno_serm', label: 'SERM' },
   { value: 'sprm', label: 'SPRM' },
   { value: 'inhibidor_enzimatico', label: 'Inhibidores' },
@@ -149,7 +149,7 @@ function buildBar() {
       buttonGroup(REPRESENTATIONS, state.representation, setRepresentation),
       selectField('Color', COLORINGS, state.coloring, setColoring),
       el('button', {
-        class: 'a-btn', title: 'Mostrar u ocultar hidrogenos',
+        class: 'a-btn', title: 'Mostrar u ocultar hidrógenos',
         'data-active': showHydrogens ? 'true' : null,
         onClick: (e) => {
           showHydrogens = !showHydrogens;
@@ -159,7 +159,7 @@ function buildBar() {
         },
       }, el('span', { text: 'H' })),
       el('button', { class: 'a-btn a-btn--icon', title: 'Encuadrar (R)', onClick: () => stage.engine.resetCamera(1.3) }, icon('frame')),
-      el('button', { class: 'a-btn a-btn--icon', title: 'Girar automaticamente',
+      el('button', { class: 'a-btn a-btn--icon', title: 'Girar automáticamente',
         onClick: (e) => {
           stage.engine.autoSpin = !stage.engine.autoSpin;
           e.currentTarget.dataset.active = stage.engine.autoSpin ? 'true' : '';
@@ -172,7 +172,7 @@ function buildBar() {
 export function mount(host, ctx) {
   const panel = el('div', { style: { display: 'flex', flexDirection: 'column', height: '100%' } });
   const searchInput = el('input', {
-    type: 'search', placeholder: 'Filtrar…', 'aria-label': 'Filtrar moleculas',
+    type: 'search', placeholder: 'Filtrar…', 'aria-label': 'Filtrar moléculas',
     style: { width: '100%', border: '1px solid var(--line-strong)', borderRadius: 'var(--radius-sm)',
              padding: '5px 8px', background: 'var(--surface-2)' },
     onInput: debounce((e) => { query = e.target.value; renderList(); }, 120),
@@ -184,8 +184,8 @@ export function mount(host, ctx) {
   panel.appendChild(listHost);
   const counts = molecules();
   panel.appendChild(el('div', { style: { padding: '7px 10px', borderTop: '1px solid var(--line)' }, class: 'a-src',
-    text: counts.list.length + ' moleculas con 3D' + (counts.missing3d.length ? ' · ' + counts.missing3d.length + ' sin conformacion' : '') }));
-  stage = mountStage(host, { label: 'Modelo tridimensional de la molecula', panel });
+    text: counts.list.length + ' moléculas con 3D' + (counts.missing3d.length ? ' · ' + counts.missing3d.length + ' sin conformación' : '') }));
+  stage = mountStage(host, { label: 'Modelo tridimensional de la molécula', panel });
 
   stage.engine.on('hover', (info) => {
     if (!info || !node) { hideTooltip(); return; }
@@ -197,7 +197,7 @@ export function mount(host, ctx) {
     const item = stage.engine.renderer.pickList.find((p) => p.index === index);
     showTooltip(el('div', {}, [
       el('strong', { text: record.atoms.el[index] + (number ? ' ' + number : '') }),
-      el('div', { class: 'a-tooltip__sub', text: number ? 'posicion ' + number + ' del nucleo' : 'atomo ' + (index + 1) }),
+      el('div', { class: 'a-tooltip__sub', text: number ? 'posición ' + number + ' del núcleo' : 'átomo ' + (index + 1) }),
     ]), rect.left + (item ? item.x : 0), rect.top + (item ? item.y : 0));
   });
 

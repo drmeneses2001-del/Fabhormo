@@ -116,8 +116,8 @@ export function pathTo(molId, rootId) {
 /* --------------------------------------------------------------- busqueda --- */
 
 const SEARCHABLE = [
-  ['molecules', 'Molecula'], ['enzymes', 'Enzima'], ['organs', 'Organo'],
-  ['receptors', 'Receptor'], ['conditions', 'Cuadro clinico'], ['tissues', 'Tejido'],
+  ['molecules', 'Molécula'], ['enzymes', 'Enzima'], ['organs', 'Órgano'],
+  ['receptors', 'Receptor'], ['conditions', 'Cuadro clínico'], ['tissues', 'Tejido'],
   ['readings', 'Lectura'],
 ];
 

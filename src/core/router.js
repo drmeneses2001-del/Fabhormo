@@ -28,7 +28,7 @@ function matchRoute(pathParts) {
 
 export function parseHash(hash) {
   const raw = (hash || '').replace(/^#\/?/, '');
-  const [pathPart, queryPart] = raw.split('?');
+  const [pathPart, queryPart] = raw.split('¿?');
   const parts = pathPart.split('/').filter(Boolean);
   const query = {};
   if (queryPart) for (const kv of queryPart.split('&')) {

@@ -11,35 +11,35 @@ import json, os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'src', 'data')
 
-PENDIENTE = ('Referencia transcrita sin acceso a la red desde el entorno de compilacion; '
-             'el identificador esta pendiente de comprobacion en linea.')
+PENDIENTE = ('Referencia transcrita sin acceso a la red desde el entorno de compilación; '
+             'el identificador está pendiente de comprobación en línea.')
 
 EXTRA_READINGS = [
     dict(id='read:hall2020', kind='libro',
          citation='Hall JE, Hall ME. Guyton and Hall Textbook of Medical Physiology. 14th ed. '
-                  'Elsevier; 2020. Capitulos de fisiologia endocrina y reproductiva.',
-         doi=None, verified=False, note=PENDIENTE, tags=['fisiologia', 'organos blanco'],
-         summary='Texto de fisiologia de referencia para los efectos de las hormonas esteroideas '
-                 'sobre cada organo diana.'),
+                  'Elsevier; 2020. Capitulos de fisiología endocrina y reproductiva.',
+         doi=None, verified=False, note=PENDIENTE, tags=['fisiología', 'órganos blanco'],
+         summary='Texto de fisiología de referencia para los efectos de las hormonas esteroideas '
+                 'sobre cada órgano diana.'),
     dict(id='read:speroff2020', kind='libro',
          citation='Taylor HS, Pal L, Seli E. Speroff’s Clinical Gynecologic Endocrinology and '
                   'Infertility. 9th ed. Wolters Kluwer; 2020.',
          doi=None, verified=False, note=PENDIENTE,
-         tags=['endocrinologia ginecologica', 'ciclo', 'anticoncepcion'],
-         summary='Referencia clinica para el ciclo hormonal, los efectos endometriales y ovaricos '
-                 'y la anticoncepcion hormonal.'),
+         tags=['endocrinología ginecológica', 'ciclo', 'anticoncepción'],
+         summary='Referencia clínica para el ciclo hormonal, los efectos endometriales y ovaricos '
+                 'y la anticoncepción hormonal.'),
     dict(id='read:mooradian1987', kind='revision',
          citation='Mooradian AD, Morley JE, Korenman SG. Biological actions of androgens. '
                   'Endocr Rev. 1987;8(1):1-28.',
          doi='10.1210/edrv-8-1-1', verified=False, note=PENDIENTE,
-         tags=['androgenos', 'organos blanco'],
-         summary='Revision clasica de las acciones biologicas de los androgenos por tejido.'),
+         tags=['andrógenos', 'órganos blanco'],
+         summary='Revisión clásica de las acciones biológicas de los andrógenos por tejido.'),
     dict(id='read:oms2015', kind='guia',
-         citation='Organizacion Mundial de la Salud. Medical eligibility criteria for contraceptive '
+         citation='Organización Mundial de la Salud. Medical eligibility criteria for contraceptive '
                   'use. 5th ed. Ginebra: OMS; 2015.',
-         doi=None, verified=False, note=PENDIENTE, tags=['anticoncepcion', 'elegibilidad'],
-         summary='Criterios medicos de elegibilidad para el uso de anticonceptivos, con las '
-                 'categorias 1 a 4 por metodo y condicion.'),
+         doi=None, verified=False, note=PENDIENTE, tags=['anticoncepción', 'elegibilidad'],
+         summary='Criterios médicos de elegibilidad para el uso de anticonceptivos, con las '
+                 'categorías 1 a 4 por método y condición.'),
 ]
 
 HALL = 'read:hall2020'
@@ -49,12 +49,12 @@ MILLER = 'read:miller2011'
 
 # ------------------------------------------------------------------ receptores ---
 RECEPTORS = [
-    dict(id='rec:AR', gene='AR', es='Receptor de androgenos', en='Androgen receptor', corto='AR',
+    dict(id='rec:AR', gene='AR', es='Receptor de andrógenos', en='Androgen receptor', corto='AR',
          cls='nuclear', isoforms=['AR-A', 'AR-B'],
          mechanism='Receptor nuclear de la familia de esteroides. Sin ligando permanece en el '
                    'citoplasma unido a chaperonas; al unir testosterona o dihidrotestosterona se '
-                   'dimeriza, entra al nucleo y se une a elementos de respuesta a androgenos. La '
-                   'dihidrotestosterona se disocia mas despacio, y de ahi su mayor potencia.',
+                   'dimeriza, entra al núcleo y se une a elementos de respuesta a andrógenos. La '
+                   'dihidrotestosterona se disocia más despacio, y de ahi su mayor potencia.',
          ligands=[('mol:dht', 'agonista'), ('mol:testosterona', 'agonista'),
                   ('mol:11ceto_testosterona', 'agonista'), ('mol:androstenediona', 'agonista_parcial'),
                   ('drug:bicalutamida', 'antagonista'), ('drug:enzalutamida', 'antagonista'),
@@ -65,11 +65,11 @@ RECEPTORS = [
                   ('drug:estanozolol', 'agonista'), ('drug:mesterolona', 'agonista'),
                   ('drug:danazol', 'agonista_parcial'), ('drug:levonorgestrel', 'agonista_parcial')],
          source=[MILLER, MOORADIAN]),
-    dict(id='rec:ERa', gene='ESR1', es='Receptor de estrogenos alfa', en='Estrogen receptor alpha',
+    dict(id='rec:ERa', gene='ESR1', es='Receptor de estrógenos alfa', en='Estrogen receptor alpha',
          corto='ERα', cls='nuclear', isoforms=None,
          mechanism='Media la mayor parte de los efectos proliferativos del estradiol en mama, '
-                   'utero, hueso e higado. Los moduladores selectivos se comportan como agonistas '
-                   'en unos tejidos y antagonistas en otros segun los coactivadores presentes.',
+                   'útero, hueso e hígado. Los moduladores selectivos se comportan como agonistas '
+                   'en unos tejidos y antagonistas en otros según los coactivadores presentes.',
          ligands=[('mol:estradiol', 'agonista'), ('mol:estrona', 'agonista_parcial'),
                   ('mol:estriol', 'agonista_parcial'), ('mol:estetrol', 'agonista_parcial'),
                   ('drug:etinilestradiol', 'agonista'), ('drug:tamoxifeno', 'modulador'),
@@ -77,19 +77,19 @@ RECEPTORS = [
                   ('drug:bazedoxifeno', 'modulador'), ('drug:ospemifeno', 'modulador'),
                   ('drug:fulvestrant', 'antagonista'), ('drug:tibolona', 'agonista_parcial')],
          source=[MILLER, SPEROFF]),
-    dict(id='rec:ERb', gene='ESR2', es='Receptor de estrogenos beta', en='Estrogen receptor beta',
+    dict(id='rec:ERb', gene='ESR2', es='Receptor de estrógenos beta', en='Estrogen receptor beta',
          corto='ERβ', cls='nuclear', isoforms=None,
          mechanism='Distribucion distinta de la del receptor alfa, con papel destacado en ovario, '
-                   'prostata, sistema nervioso central, endotelio y colon. A menudo se opone a la '
-                   'senal proliferativa del receptor alfa.',
+                   'próstata, sistema nervioso central, endotelio y colon. A menudo se opone a la '
+                   'señal proliferativa del receptor alfa.',
          ligands=[('mol:estradiol', 'agonista'), ('mol:estriol', 'agonista_parcial'),
                   ('mol:androstanodiol', 'agonista_parcial'), ('drug:raloxifeno', 'modulador')],
          source=[MILLER]),
     dict(id='rec:PR', gene='PGR', es='Receptor de progesterona', en='Progesterone receptor',
          corto='PR', cls='nuclear', isoforms=['PR-A', 'PR-B'],
-         mechanism='Su expresion depende del estimulo estrogenico previo: sin estrogeno no hay '
+         mechanism='Su expresión depende del estímulo estrogénico previo: sin estrógeno no hay '
                    'receptor, y por eso la progesterona solo actua sobre un tejido ya preparado. '
-                   'PR-B activa la transcripcion y PR-A la reprime.',
+                   'PR-B activa la transcripción y PR-A la reprime.',
          ligands=[('mol:progesterona', 'agonista'), ('drug:levonorgestrel', 'agonista'),
                   ('drug:noretisterona', 'agonista'), ('drug:dienogest', 'agonista'),
                   ('drug:drospirenona', 'agonista'), ('drug:mpa', 'agonista'),
@@ -100,8 +100,8 @@ RECEPTORS = [
          source=[SPEROFF]),
     dict(id='rec:GR', gene='NR3C1', es='Receptor de glucocorticoides', en='Glucocorticoid receptor',
          corto='GR', cls='nuclear', isoforms=None,
-         mechanism='Ubicuo. Media la accion metabolica y antiinflamatoria del cortisol y explica '
-                   'los efectos adversos de los progestagenos con actividad glucocorticoide.',
+         mechanism='Ubicuo. Media la acción metabólica y antiinflamatoria del cortisol y explica '
+                   'los efectos adversos de los progestágenos con actividad glucocorticoide.',
          ligands=[('mol:cortisol', 'agonista'), ('drug:dexametasona', 'agonista'),
                   ('drug:prednisolona', 'agonista'), ('drug:mpa', 'agonista_parcial'),
                   ('drug:mifepristona', 'antagonista')],
@@ -115,10 +115,10 @@ RECEPTORS = [
                   ('mol:doc', 'agonista'), ('drug:espironolactona', 'antagonista'),
                   ('drug:drospirenona', 'antagonista')],
          source=[MILLER]),
-    dict(id='rec:GPER1', gene='GPER1', es='Receptor de estrogenos acoplado a proteina G',
+    dict(id='rec:GPER1', gene='GPER1', es='Receptor de estrógenos acoplado a proteína G',
          en='G protein-coupled estrogen receptor', corto='GPER1', cls='membrana', isoforms=None,
-         mechanism='Receptor de membrana que explica efectos rapidos del estradiol, en segundos o '
-                   'minutos, incompatibles con la via genomica clasica.',
+         mechanism='Receptor de membrana que explica efectos rápidos del estradiol, en segundos o '
+                   'minutos, incompatibles con la vía genomica clásica.',
          ligands=[('mol:estradiol', 'agonista'), ('drug:tamoxifeno', 'agonista_parcial')],
          source=[MILLER]),
 ]
@@ -133,172 +133,172 @@ def organ(oid, es, en, anchor, sex, kind, targets, synthesizes=None, note=None):
 
 # (hormona, receptor, efecto, correlato clinico, peso, etapas, fuente)
 ORGANS = [
-    organ('org:hipotalamo', 'Hipotalamo', 'Hypothalamus', [-1.6, 93.5, 1.1], 'ambos', 'neuroendocrino', [
+    organ('org:hipotalamo', 'Hipotálamo', 'Hypothalamus', [-1.6, 93.5, 1.1], 'ambos', 'neuroendocrino', [
         ('mol:estradiol', 'rec:ERa', 'Modula la frecuencia de los pulsos de GnRH; el ascenso '
-         'sostenido de estradiol preovulatorio invierte la retroalimentacion de negativa a positiva.',
-         'La retroalimentacion positiva es la que desencadena el pico de LH y la ovulacion.', 1,
+         'sostenido de estradiol preovulatorio invierte la retroalimentación de negativa a positiva.',
+         'La retroalimentación positiva es la que desencadena el pico de LH y la ovulación.', 1,
          ['pubertad', 'adulto'], SPEROFF),
-        ('mol:testosterona', 'rec:AR', 'Frena la secrecion de GnRH de forma directa y, tras '
-         'aromatizacion local, tambien a traves del receptor de estrogenos.',
-         'El androgeno exogeno suprime el eje y causa hipogonadismo hipogonadotropo con atrofia '
+        ('mol:testosterona', 'rec:AR', 'Frena la secreción de GnRH de forma directa y, tras '
+         'aromatización local, también a través del receptor de estrógenos.',
+         'El andrógeno exógeno suprime el eje y causa hipogonadismo hipogonadotropo con atrofia '
          'testicular y azoospermia.', 1, ['pubertad', 'adulto'], MOORADIAN),
-        ('mol:progesterona', 'rec:PR', 'Enlentece los pulsos de GnRH en la fase lutea.',
-         'Es la base del efecto anticonceptivo central de los progestagenos.', 0.8,
+        ('mol:progesterona', 'rec:PR', 'Enlentece los pulsos de GnRH en la fase lútea.',
+         'Es la base del efecto anticonceptivo central de los progestágenos.', 0.8,
          ['adulto'], SPEROFF),
     ]),
-    organ('org:hipofisis', 'Hipofisis', 'Pituitary gland', [1.4, 90.6, 1.1], 'ambos', 'neuroendocrino', [
+    organ('org:hipofisis', 'Hipófisis', 'Pituitary gland', [1.4, 90.6, 1.1], 'ambos', 'neuroendocrino', [
         ('mol:estradiol', 'rec:ERa', 'Aumenta la sensibilidad del gonadotropo a la GnRH y la '
          'reserva de LH liberable.', 'Sin ese efecto no se produce el pico ovulatorio de LH.', 1,
          ['pubertad', 'adulto'], SPEROFF),
         ('mol:testosterona', 'rec:AR', 'Reduce la amplitud de los pulsos de LH.',
-         'Explica la supresion de gonadotropinas con testosterona exogena.', 0.9,
+         'Explica la supresión de gonadotropinas con testosterona exógena.', 0.9,
          ['pubertad', 'adulto'], MOORADIAN),
     ]),
     organ('org:cerebro', 'Sistema nervioso central', 'Central nervous system', [0, 96.4, 2.2],
           'ambos', 'diana', [
         ('mol:estradiol', 'rec:ERa', 'Efectos sobre memoria verbal, estado de animo, '
-         'termorregulacion y flujo sanguineo cerebral; participa en la diferenciacion sexual del '
-         'cerebro por aromatizacion local de la testosterona.',
-         'La caida de estradiol en la menopausia se asocia a sofocos y alteracion del sueno.', 1,
+         'termorregulación y flujo sanguíneo cerebral; participa en la diferenciación sexual del '
+         'cerebro por aromatización local de la testosterona.',
+         'La caida de estradiol en la menopausia se asocia a sofocos y alteración del sueno.', 1,
          ['fetal', 'pubertad', 'adulto', 'climaterio'], HALL),
-        ('mol:alopregnanolona', 'rec:GPER1', 'Modulador alosterico positivo del receptor GABA-A, '
+        ('mol:alopregnanolona', 'rec:GPER1', 'Modulador alostérico positivo del receptor GABA-A, '
          'con efecto ansiolitico, sedante y anticonvulsivo.',
-         'Su caida brusca tras el parto participa en la depresion posparto; es la diana de la '
+         'Su caida brusca tras el parto participa en la depresión posparto; es la diana de la '
          'brexanolona.', 0.9, ['adulto'], MILLER),
-        ('mol:testosterona', 'rec:AR', 'Efectos sobre libido, agresividad y cognicion espacial.',
-         'El hipogonadismo cursa con perdida de libido y de energia.', 0.8,
+        ('mol:testosterona', 'rec:AR', 'Efectos sobre libido, agresividad y cognición espacial.',
+         'El hipogonadismo cursa con pérdida de libido y de energía.', 0.8,
          ['pubertad', 'adulto'], MOORADIAN),
     ]),
     organ('org:mama', 'Mama', 'Breast', [5.6, 75.5, 2.6], 'ambos', 'diana', [
-        ('mol:estradiol', 'rec:ERa', 'Crecimiento y ramificacion del sistema ductal y deposito de '
+        ('mol:estradiol', 'rec:ERa', 'Crecimiento y ramificación del sistema ductal y deposito de '
          'grasa; en la pubertad femenina es el motor de la telarquia.',
-         'El estimulo estrogenico mantenido es el principal factor hormonal del cancer de mama con '
+         'El estímulo estrogénico mantenido es el principal factor hormonal del cáncer de mama con '
          'receptor positivo.', 1, ['pubertad', 'adulto', 'gestacion'], SPEROFF),
-        ('mol:progesterona', 'rec:PR', 'Desarrollo lobulillo-alveolar, que prepara la glandula para '
-         'la lactancia.', 'La mastalgia ciclica de la fase lutea responde a este estimulo.', 0.9,
+        ('mol:progesterona', 'rec:PR', 'Desarrollo lobulillo-alveolar, que prepara la glándula para '
+         'la lactancia.', 'La mastalgia ciclica de la fase lútea responde a este estímulo.', 0.9,
          ['adulto', 'gestacion'], SPEROFF),
-        ('mol:estrona', 'rec:ERa', 'Fuente principal de estimulo estrogenico tras la menopausia, '
-         'generada por aromatizacion en el estroma mamario y en el adiposo.',
-         'Justifica el uso de inhibidores de aromatasa en el cancer de mama posmenopausico.', 0.7,
+        ('mol:estrona', 'rec:ERa', 'Fuente principal de estímulo estrogénico tras la menopausia, '
+         'generada por aromatización en el estroma mamario y en el adiposo.',
+         'Justifica el uso de inhibidores de aromatasa en el cáncer de mama posmenopáusico.', 0.7,
          ['climaterio'], SPEROFF),
     ], synthesizes=['tis:mama_estroma']),
-    organ('org:utero', 'Utero', 'Uterus', [0, 49.5, 2.3], 'xx', 'diana', [
-        ('mol:estradiol', 'rec:ERa', 'Proliferacion del endometrio y crecimiento del miometrio; '
-         'induce la expresion del receptor de progesterona.',
-         'El estimulo estrogenico sin oposicion produce hiperplasia endometrial y aumenta el riesgo '
+    organ('org:utero', 'Útero', 'Uterus', [0, 49.5, 2.3], 'xx', 'diana', [
+        ('mol:estradiol', 'rec:ERa', 'Proliferación del endometrio y crecimiento del miometrio; '
+         'induce la expresión del receptor de progesterona.',
+         'El estímulo estrogénico sin oposición produce hiperplasia endometrial y aumenta el riesgo '
          'de carcinoma.', 1, ['pubertad', 'adulto', 'gestacion'], SPEROFF),
         ('mol:progesterona', 'rec:PR', 'Transforma el endometrio proliferativo en secretor, frena '
          'la mitosis y mantiene la quiescencia del miometrio.',
-         'Su retirada al final del ciclo desencadena la menstruacion; su mantenimiento sostiene la '
+         'Su retirada al final del ciclo desencadena la menstruación; su mantenimiento sostiene la '
          'gestacion.', 1, ['adulto', 'gestacion'], SPEROFF),
         ('mol:estradiol', 'rec:ERb', 'Aumenta la contractilidad y la sensibilidad a la oxitocina al '
-         'final de la gestacion.', 'Participa en el inicio del parto.', 0.6, ['gestacion'], SPEROFF),
+         'final de la gestación.', 'Participa en el inicio del parto.', 0.6, ['gestacion'], SPEROFF),
     ]),
     organ('org:ovario', 'Ovario', 'Ovary', [5.2, 52.5, 1.7], 'xx', 'ambos', [
-        ('mol:estradiol', 'rec:ERb', 'Actua de forma local sobre la maduracion folicular y la '
+        ('mol:estradiol', 'rec:ERb', 'Actua de forma local sobre la maduración folicular y la '
          'supervivencia de la granulosa.', 'La atresia folicular depende del equilibrio local entre '
-         'androgeno y estrogeno.', 0.8, ['adulto'], SPEROFF),
+         'andrógeno y estrógeno.', 0.8, ['adulto'], SPEROFF),
         ('mol:testosterona', 'rec:AR', 'En cantidad moderada favorece el reclutamiento folicular; '
-         'en exceso induce atresia y detiene la maduracion.',
+         'en exceso induce atresia y detiene la maduración.',
          'Es el mecanismo del ovario poliquistico en el hiperandrogenismo.', 0.9,
          ['adulto'], SPEROFF),
     ], synthesizes=['tis:teca', 'tis:granulosa', 'tis:cuerpo_luteo']),
-    organ('org:testiculo', 'Testiculo', 'Testis', [3.2, 43.5, 1.9], 'xy', 'ambos', [
-        ('mol:testosterona', 'rec:AR', 'Concentracion intratesticular muy superior a la plasmatica; '
-         'es imprescindible para la espermatogenesis.',
-         'La testosterona exogena suprime la produccion intratesticular y causa infertilidad, al '
+    organ('org:testiculo', 'Testículo', 'Testis', [3.2, 43.5, 1.9], 'xy', 'ambos', [
+        ('mol:testosterona', 'rec:AR', 'Concentración intratesticular muy superior a la plasmática; '
+         'es imprescindible para la espermatogénesis.',
+         'La testosterona exógena suprime la producción intratesticular y causa infertilidad, al '
          'contrario de lo que muchos esperan.', 1, ['pubertad', 'adulto'], MOORADIAN),
     ], synthesizes=['tis:leydig']),
-    organ('org:prostata', 'Prostata', 'Prostate', [0, 47.5, 1.7], 'xy', 'ambos', [
-        ('mol:dht', 'rec:AR', 'Crecimiento y mantenimiento del epitelio glandular; es el androgeno '
+    organ('org:prostata', 'Próstata', 'Prostate', [0, 47.5, 1.7], 'xy', 'ambos', [
+        ('mol:dht', 'rec:AR', 'Crecimiento y mantenimiento del epitelio glandular; es el andrógeno '
          'dominante en este tejido por la 5α-reductasa tipo 2 local.',
-         'La hiperplasia benigna y el cancer de prostata dependen de esta senal: de ahi los '
-         'inhibidores de 5α-reductasa y los antiandrogenos.', 1, ['pubertad', 'adulto'], MOORADIAN),
+         'La hiperplasia benigna y el cáncer de próstata dependen de esta señal: de ahi los '
+         'inhibidores de 5α-reductasa y los antiandrógenos.', 1, ['pubertad', 'adulto'], MOORADIAN),
     ], synthesizes=['tis:prostata_estroma']),
     organ('org:genitales_externos', 'Genitales externos', 'External genitalia', [0, 44.2, 2],
           'ambos', 'diana', [
-        ('mol:dht', 'rec:AR', 'Virilizacion en la vida fetal: fusion de los pliegues labioescrotales, '
-         'formacion de la uretra peneana y crecimiento del falo.',
-         'El deficit de 5α-reductasa tipo 2 produce genitales ambiguos en el 46,XY pese a tener '
+        ('mol:dht', 'rec:AR', 'Virilización en la vida fetal: fusión de los pliegues labioescrotales, '
+         'formación de la uretra peneana y crecimiento del falo.',
+         'El déficit de 5α-reductasa tipo 2 produce genitales ambiguos en el 46,XY pese a tener '
          'testosterona normal.', 1, ['fetal', 'pubertad'], MILLER),
-        ('mol:testosterona', 'rec:AR', 'Mantiene los conductos de Wolff: epididimo, conducto '
+        ('mol:testosterona', 'rec:AR', 'Mantiene los conductos de Wolff: epidídimo, conducto '
          'deferente y vesiculas seminales.',
          'Distingue lo que depende de testosterona de lo que depende de dihidrotestosterona.', 0.9,
          ['fetal'], MILLER),
     ], synthesizes=['tis:piel_genital']),
     organ('org:piel', 'Piel y anejos', 'Skin and adnexa', [13.6, 70, 2.2], 'ambos', 'diana', [
-        ('mol:dht', 'rec:AR', 'Estimula la glandula sebacea y transforma el vello en pelo terminal '
-         'en las zonas androgenodependientes; en el cuero cabelludo con predisposicion genetica '
-         'produce miniaturizacion del foliculo.',
-         'Acne, hirsutismo y alopecia androgenica pueden aparecer con androgenos circulantes '
-         'normales, porque lo que decide es la conversion local.', 1,
+        ('mol:dht', 'rec:AR', 'Estimula la glándula sebácea y transforma el vello en pelo terminal '
+         'en las zonas androgenodependientes; en el cuero cabelludo con predisposición genética '
+         'produce miniaturización del folículo.',
+         'Acné, hirsutismo y alopecia androgénica pueden aparecer con andrógenos circulantes '
+         'normales, porque lo que decide es la conversión local.', 1,
          ['pubertad', 'adulto'], MOORADIAN),
-        ('mol:estradiol', 'rec:ERa', 'Mantiene el grosor dermico, el colageno y la hidratacion.',
-         'Su caida en el climaterio se asocia a atrofia cutanea.', 0.7, ['climaterio'], HALL),
+        ('mol:estradiol', 'rec:ERa', 'Mantiene el grosor dermico, el colageno y la hidratación.',
+         'Su caida en el climaterio se asocia a atrofia cutánea.', 0.7, ['climaterio'], HALL),
     ], synthesizes=['tis:foliculo_piloso']),
-    organ('org:hueso', 'Hueso y cartilago de crecimiento', 'Bone and growth plate', [4.6, 24, 2.2],
+    organ('org:hueso', 'Hueso y cartílago de crecimiento', 'Bone and growth plate', [4.6, 24, 2.2],
           'ambos', 'diana', [
-        ('mol:estradiol', 'rec:ERa', 'Frena la resorcion osteoclastica, mantiene la masa osea y '
-         'cierra el cartilago de crecimiento en ambos sexos.',
-         'El deficit de aromatasa cursa con talla alta y epifisis abiertas en el varon adulto; la '
-         'menopausia acelera la perdida de masa osea.', 1,
+        ('mol:estradiol', 'rec:ERa', 'Frena la resorción osteoclastica, mantiene la masa ósea y '
+         'cierra el cartílago de crecimiento en ambos sexos.',
+         'El déficit de aromatasa cursa con talla alta y epifisis abiertas en el varon adulto; la '
+         'menopausia acelera la pérdida de masa ósea.', 1,
          ['pubertad', 'adulto', 'climaterio'], MILLER),
-        ('mol:testosterona', 'rec:AR', 'Aumenta el tamano oseo perioestico y la masa muscular '
-         'asociada.', 'Explica la diferencia de talla y de estructura osea entre sexos.', 0.8,
+        ('mol:testosterona', 'rec:AR', 'Aumenta el tamaño óseo perioestico y la masa muscular '
+         'asociada.', 'Explica la diferencia de talla y de estructura ósea entre sexos.', 0.8,
          ['pubertad', 'adulto'], MOORADIAN),
     ], synthesizes=['tis:hueso_osteoblasto']),
-    organ('org:musculo', 'Musculo esqueletico', 'Skeletal muscle', [13.2, 59, 2.4], 'ambos', 'diana', [
-        ('mol:testosterona', 'rec:AR', 'Aumenta la sintesis proteica y el numero de nucleos por '
+    organ('org:musculo', 'Músculo esquelético', 'Skeletal muscle', [13.2, 59, 2.4], 'ambos', 'diana', [
+        ('mol:testosterona', 'rec:AR', 'Aumenta la síntesis proteica y el número de núcleos por '
          'fibra, con hipertrofia dosis dependiente.',
          'Es el efecto buscado con los anabolizantes y el que se pierde en el hipogonadismo.', 1,
          ['pubertad', 'adulto'], MOORADIAN),
     ]),
     organ('org:adiposo', 'Tejido adiposo', 'Adipose tissue', [7.2, 56, 2.6], 'ambos', 'ambos', [
         ('mol:estradiol', 'rec:ERa', 'Favorece el deposito subcutaneo gluteofemoral.',
-         'Marca el patron de distribucion de la grasa segun el perfil hormonal.', 0.8,
+         'Marca el patron de distribución de la grasa según el perfil hormonal.', 0.8,
          ['pubertad', 'adulto'], HALL),
         ('mol:testosterona', 'rec:AR', 'Reduce la masa grasa total y favorece el patron visceral.',
          'El hipogonadismo se asocia a aumento de grasa visceral y resistencia a la insulina.', 0.8,
          ['adulto'], MOORADIAN),
     ], synthesizes=['tis:adiposo']),
-    organ('org:higado', 'Higado', 'Liver', [4.4, 66.5, 2.6], 'ambos', 'ambos', [
-        ('mol:estradiol', 'rec:ERa', 'Aumenta la sintesis de SHBG, de factores de coagulacion y de '
+    organ('org:higado', 'Hígado', 'Liver', [4.4, 66.5, 2.6], 'ambos', 'ambos', [
+        ('mol:estradiol', 'rec:ERa', 'Aumenta la síntesis de SHBG, de factores de coagulación y de '
          'angiotensinogeno, y modifica el perfil lipidico.',
-         'El primer paso hepatico explica por que el estrogeno oral eleva mas la SHBG y el riesgo '
-         'trombotico que la via transdermica.', 1, ['adulto'], SPEROFF),
-        ('mol:testosterona', 'rec:AR', 'Reduce la sintesis de SHBG.',
-         'Al bajar la SHBG aumenta la fraccion libre de los androgenos, lo que amplifica el efecto.',
+         'El primer paso hepático explica por que el estrógeno oral eleva más la SHBG y el riesgo '
+         'trombótico que la vía transdermica.', 1, ['adulto'], SPEROFF),
+        ('mol:testosterona', 'rec:AR', 'Reduce la síntesis de SHBG.',
+         'Al bajar la SHBG aumenta la fracción libre de los andrógenos, lo que amplifica el efecto.',
          0.7, ['adulto'], MOORADIAN),
     ], synthesizes=['tis:hepatocito']),
-    organ('org:rinon', 'Rinon', 'Kidney', [6.6, 61.5, 1.8], 'ambos', 'diana', [
-        ('mol:aldosterona', 'rec:MR', 'Aumenta la reabsorcion de sodio y la excrecion de potasio e '
+    organ('org:rinon', 'Riñón', 'Kidney', [6.6, 61.5, 1.8], 'ambos', 'diana', [
+        ('mol:aldosterona', 'rec:MR', 'Aumenta la reabsorción de sodio y la excreción de potasio e '
          'hidrogeniones en el tubulo colector.',
-         'Su exceso produce hipertension con hipopotasemia y alcalosis metabolica.', 1,
+         'Su exceso produce hipertensión con hipopotasemia y alcalosis metabólica.', 1,
          ['adulto'], MILLER),
         ('mol:doc', 'rec:MR', 'Actividad mineralocorticoide propia cuando se acumula.',
-         'Es la causa de la hipertension en los deficits de 11β-hidroxilasa y de 17α-hidroxilasa.',
+         'Es la causa de la hipertensión en los déficits de 11β-hidroxilasa y de 17α-hidroxilasa.',
          0.8, ['adulto'], MILLER),
     ]),
-    organ('org:endotelio', 'Corazon y vasos', 'Heart and vessels', [-2.6, 71.5, 2.2], 'ambos', 'diana', [
-        ('mol:estradiol', 'rec:ERa', 'Favorece la vasodilatacion dependiente de oxido nitrico y '
+    organ('org:endotelio', 'Corazón y vasos', 'Heart and vessels', [-2.6, 71.5, 2.2], 'ambos', 'diana', [
+        ('mol:estradiol', 'rec:ERa', 'Favorece la vasodilatación dependiente de oxido nitrico y '
          'mejora el perfil lipidico.',
          'La ventana de oportunidad cardiovascular explica por que el momento de iniciar la terapia '
          'hormonal cambia el balance de riesgo.', 0.9, ['adulto', 'climaterio'], SPEROFF),
     ]),
-    organ('org:suprarrenal', 'Glandula suprarrenal', 'Adrenal gland', [3.4, 64.5, 1.5],
+    organ('org:suprarrenal', 'Glándula suprarrenal', 'Adrenal gland', [3.4, 64.5, 1.5],
           'ambos', 'sintesis', [
-        ('mol:cortisol', 'rec:GR', 'Retroalimentacion negativa sobre la propia corteza a traves del '
-         'eje hipotalamo-hipofisis.',
-         'Su interrupcion brusca tras tratamiento prolongado produce insuficiencia suprarrenal.', 0.7,
+        ('mol:cortisol', 'rec:GR', 'Retroalimentación negativa sobre la propia corteza a través del '
+         'eje hipotálamo-hipófisis.',
+         'Su interrupción brusca tras tratamiento prolongado produce insuficiencia suprarrenal.', 0.7,
          ['adulto'], MILLER),
     ], synthesizes=['tis:glomerulosa', 'tis:fasciculada', 'tis:reticular']),
     organ('org:placenta', 'Placenta', 'Placenta', [0, 55.5, 2.4], 'xx', 'sintesis', [
-        ('mol:progesterona', 'rec:PR', 'Mantiene la quiescencia uterina durante toda la gestacion.',
-         'La caida funcional de la senal de progesterona participa en el inicio del parto; es la '
+        ('mol:progesterona', 'rec:PR', 'Mantiene la quiescencia uterina durante toda la gestación.',
+         'La caida funcional de la señal de progesterona participa en el inicio del parto; es la '
          'diana de la mifepristona.', 1, ['gestacion'], SPEROFF),
     ], synthesizes=['tis:sincitiotrofoblasto']),
     organ('org:laringe', 'Laringe', 'Larynx', [0, 85.8, 1.4], 'ambos', 'diana', [
-        ('mol:testosterona', 'rec:AR', 'Alarga las cuerdas vocales y engrosa el cartilago tiroides.',
+        ('mol:testosterona', 'rec:AR', 'Alarga las cuerdas vocales y engrosa el cartílago tiroides.',
          'El cambio de voz de la pubertad masculina es irreversible.', 0.9, ['pubertad'], MOORADIAN),
     ]),
 ]
@@ -331,7 +331,7 @@ def main():
         fh.write(json.dumps(readings, ensure_ascii=False, separators=(',', ':')))
 
     targets = sum(len(o['targets']) for o in ORGANS)
-    print('  %d organos con %d efectos, %d receptores, %d lecturas'
+    print('  %d órganos con %d efectos, %d receptores, %d lecturas'
           % (len(ORGANS), targets, len(receptors), len(readings)))
 
 

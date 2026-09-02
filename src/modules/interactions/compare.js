@@ -1,4 +1,4 @@
-import { el, clear, icon, announce } from '../../core/dom.js';
+import { el, clear, icon, announce, num } from '../../core/dom.js';
 import { byId, all, name as entityName } from '../../core/repo.js';
 import { go, idFromSlug, slugFromId, linkFor } from '../../core/router.js';
 import * as store from '../../core/store.js';
@@ -107,37 +107,37 @@ function renderPanel(fitRmsd, paired) {
       el('thead', {}, el('tr', {}, [el('th', { text: '' }),
         el('th', { text: a.names.corto || a.names.es }), el('th', { text: b.names.corto || b.names.es })])),
       el('tbody', {}, [
-        row('Formula', a.formula, b.formula),
+        row('Fórmula', a.formula, b.formula),
         row('Masa molar', a.mw + ' g/mol', b.mw + ' g/mol'),
         row('Familia', a.family.replace(/_/g, ' '), b.family.replace(/_/g, ' ')),
-        row('Atomos pesados', String(a.heavyAtoms), String(b.heavyAtoms)),
+        row('Átomos pesados', String(a.heavyAtoms), String(b.heavyAtoms)),
       ]),
     ]),
   ]));
 
   const diff = structuralDiff(a, b);
   panelBody.appendChild(el('div', { class: 'a-section' }, [
-    el('div', { class: 'a-section__title', text: 'Diferencias por posicion' }),
+    el('div', { class: 'a-section__title', text: 'Diferencias por posición' }),
     diff.length
       ? el('table', {}, [
-          el('thead', {}, el('tr', {}, [el('th', { text: 'Posicion' }),
+          el('thead', {}, el('tr', {}, [el('th', { text: 'Posición' }),
             el('th', { text: a.names.corto || 'A' }), el('th', { text: b.names.corto || 'B' })])),
           el('tbody', {}, diff.map((d) => el('tr', {}, [
             el('td', { class: 'mono', text: d.position }),
             el('td', { text: d.a }), el('td', { text: d.b })]))),
         ])
-      : el('div', { class: 'a-note', text: 'Sin diferencias de sustituyentes sobre el nucleo, o alguna '
+      : el('div', { class: 'a-note', text: 'Sin diferencias de sustituyentes sobre el núcleo, o alguna '
           + 'de las dos no es un esteroide.' }),
   ]));
 
   if (fitRmsd !== null) {
     panelBody.appendChild(el('div', { class: 'a-section' }, [
-      el('div', { class: 'a-section__title', text: 'Superposicion' }),
+      el('div', { class: 'a-section__title', text: 'Superposición' }),
       el('p', { style: { fontSize: 'var(--fs-md)' },
-        text: paired + ' atomos del nucleo emparejados por numeracion esteroidea, con una '
-            + 'desviacion cuadratica media de ' + fitRmsd.toFixed(2) + ' angstrom.' }),
-      el('div', { class: 'a-src', text: 'Las conformaciones son calculadas: la desviacion mide el '
-        + 'ajuste geometrico entre ellas, no una diferencia experimental.' }),
+        text: paired + ' átomos del núcleo emparejados por numeración esteroidea, con una '
+            + 'desviación cuadrática media de ' + num(fitRmsd, 2) + ' ángstrom.' }),
+      el('div', { class: 'a-src', text: 'Las conformaciones son calculadas: la desviación mide el '
+        + 'ajuste geométrico entre ellas, no una diferencia experimental.' }),
     ]));
   }
 
@@ -178,7 +178,7 @@ function navigate() { go('#/interacciones/comparar/' + slugFromId(idA) + '/' + s
 function presetPanel() {
   const panel = el('div', { style: { display: 'flex', flexDirection: 'column', height: '100%' } });
   panel.appendChild(el('div', { style: { padding: '11px 12px 8px', borderBottom: '1px solid var(--line)' } }, [
-    el('div', { class: 'a-section__title', style: { marginBottom: '3px' }, text: 'Comparaciones utiles' }),
+    el('div', { class: 'a-section__title', style: { marginBottom: '3px' }, text: 'Comparaciones útiles' }),
     el('div', { class: 'a-src', text: 'Pares que explican una idea de un vistazo.' }),
   ]));
   const list = el('div', { class: 'a-list', style: { overflowY: 'auto', flex: '1', padding: '6px' } });

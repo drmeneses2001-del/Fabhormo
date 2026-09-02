@@ -3,7 +3,7 @@
  * Validador del conjunto de datos. Falla la compilacion si:
  *   - hay identificadores duplicados o referencias colgantes entre entidades
  *   - una entidad publicable no declara fuente
- *   - el simulador de flujo contradice la tabla clinica curada sin una nota
+ *   - el simulador de flujo contradice la tabla clínica curada sin una nota
  *     de discrepancia que lo explique
  *
  *   node tools/validate.js
@@ -80,7 +80,7 @@ for (const r of reactions) {
   // la animacion no se puede construir y la reaccion queda muda.
   const sub = molById.get(r.substrate), prod = molById.get(r.product);
   const has3d = sub && prod && sub.atoms.xyz.length && prod.atoms.xyz.length;
-  if (has3d && !r.atomMap) fail(`${r.id}: sin correspondencia atomica (ejecuta tools/gen-atommaps.py)`);
+  if (has3d && !r.atomMap) fail(`${r.id}: sin correspondencia atómica (ejecuta tools/gen-atommaps.py)`);
   for (const a of r.altEnzymes || []) must(a, r.id);
   for (const t of r.tissues || []) must(t, r.id);
   if (!r.source || !r.source.length) fail(`${r.id}: sin fuente`);
@@ -121,17 +121,17 @@ for (const e of enzymes) if (!e.source || !e.source.length) fail(`${e.id}: sin f
 for (const c of conditions) if (!c.source || !c.source.length) fail(`${c.id}: sin fuente`);
 for (const r of readings) {
   if (!r.citation) fail(`${r.id}: lectura sin cita`);
-  if (r.verified !== true) warn(`${r.id}: cita pendiente de comprobacion en linea`);
+  if (r.verified !== true) warn(`${r.id}: cita pendiente de comprobación en linea`);
 }
 
 const unverifiedMolecules = molecules.filter((m) => (m.source || []).some((s) => s.verified !== true));
 if (unverifiedMolecules.length) {
-  warn(`${unverifiedMolecules.length} moleculas con identificador de PubChem pendiente de comprobar`);
+  warn(`${unverifiedMolecules.length} moléculas con identificador de PubChem pendiente de comprobar`);
 }
 const without3d = molecules.filter((m) => m.conformer && m.conformer.kind === 'none');
-if (without3d.length) warn(`${without3d.length} moleculas sin conformacion 3D: ${without3d.map((m) => m.id).join(', ')}`);
+if (without3d.length) warn(`${without3d.length} moléculas sin conformacion 3D: ${without3d.map((m) => m.id).join(', ')}`);
 
-/* --------------------------- coherencia entre el simulador y la clinica --- */
+/* --------------------------- coherencia entre el simulador y la clínica --- */
 
 let checked = 0, agreed = 0, overridden = 0;
 for (const c of conditions) {
@@ -145,20 +145,20 @@ for (const c of conditions) {
     const expected = byMol.get(row.mol);
     if (expected && expected.override) { overridden++; continue; }
     fail(`${c.id}: el modelo calcula ${DIRECTION_LABEL[row.computed]} para ${row.mol} y la tabla `
-       + `clinica dice ${DIRECTION_LABEL[row.expected]}, sin nota de discrepancia`);
+       + `clínica dice ${DIRECTION_LABEL[row.expected]}, sin nota de discrepancia`);
   }
 }
 
 /* ----------------------------------------------------------------- salida --- */
 
 const totals = [
-  ['moleculas', molecules.length], ['enzimas', enzymes.length], ['reacciones', reactions.length],
-  ['tejidos', tissues.length], ['cuadros', conditions.length], ['organos', organs.length],
+  ['moléculas', molecules.length], ['enzimas', enzymes.length], ['reacciones', reactions.length],
+  ['tejidos', tissues.length], ['cuadros', conditions.length], ['órganos', organs.length],
   ['receptores', receptors.length], ['interacciones', interactions.length],
   ['lecturas', readings.length], ['preguntas', questions.length],
 ];
 console.log('\n  ' + totals.filter(([, n]) => n).map(([k, n]) => `${n} ${k}`).join(' · '));
-console.log(`  simulador frente a tabla clinica: ${agreed}/${checked} coinciden, `
+console.log(`  simulador frente a la tabla clínica: ${agreed}/${checked} coinciden, `
           + `${overridden} con nota de discrepancia`);
 for (const w of warnings) console.log('  aviso: ' + w);
 if (errors.length) {

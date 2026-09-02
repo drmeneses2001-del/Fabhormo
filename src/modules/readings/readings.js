@@ -6,7 +6,7 @@ import { setStageBar, crumbs } from '../../ui/shell.js';
  *  estado de verificacion de cada dato: lo que se ha comprobado en compilacion y
  *  lo que queda pendiente de comprobar en linea. */
 
-const KIND_LABEL = { revision: 'Revision', guia: 'Guia clinica', libro: 'Libro', articulo: 'Articulo' };
+const KIND_LABEL = { revision: 'Revisión', guia: 'Guía clínica', libro: 'Libro', articulo: 'Articulo' };
 
 function render(root) {
   clear(root);
@@ -19,29 +19,29 @@ function render(root) {
 
   doc.appendChild(el('h1', { text: 'Lecturas y fuentes' }));
   doc.appendChild(el('p', { style: { fontSize: 'var(--fs-lg)', color: 'var(--ink-2)', maxWidth: '66ch' },
-    text: 'Este atlas distingue entre lo que ha podido comprobarse durante la compilacion y lo que '
+    text: 'Este atlas distingue entre lo que ha podido comprobarse durante la compilación y lo que '
         + 'queda pendiente de comprobar contra la fuente original. Cada ficha lleva esa marca.' }));
 
   doc.appendChild(el('div', { class: 'a-section' }, [
-    el('div', { class: 'a-section__title', text: 'Estado de verificacion' }),
+    el('div', { class: 'a-section__title', text: 'Estado de verificación' }),
     el('table', {}, el('tbody', {}, [
-      el('tr', {}, [el('td', { text: 'Moleculas con estructura' }), el('td', { class: 'mono', text: String(molecules.length) })]),
+      el('tr', {}, [el('td', { text: 'Moléculas con estructura' }), el('td', { class: 'mono', text: String(molecules.length) })]),
       el('tr', {}, [el('td', { text: 'Con clave InChI comprobada frente a un valor de referencia' }),
         el('td', { class: 'mono', text: verified + ' de ' + molecules.length })]),
-      el('tr', {}, [el('td', { text: 'Sin conformacion tridimensional' }),
+      el('tr', {}, [el('td', { text: 'Sin conformación tridimensional' }),
         el('td', { class: 'mono', text: String(without3d.length) })]),
-      el('tr', {}, [el('td', { text: 'Enzimas, reacciones y tejidos de la via' }),
+      el('tr', {}, [el('td', { text: 'Enzimas, reacciones y tejidos de la vía' }),
         el('td', { class: 'mono', text: all('enzymes').length + ' · ' + all('reactions').length + ' · ' + all('tissues').length })]),
-      el('tr', {}, [el('td', { text: 'Cuadros clinicos y bloqueos farmacologicos' }),
+      el('tr', {}, [el('td', { text: 'Cuadros clínicos y bloqueos farmacológicos' }),
         el('td', { class: 'mono', text: String(all('conditions').length) })]),
     ])),
   ]));
 
   doc.appendChild(el('div', { class: 'a-note', style: { marginBottom: '18px' },
-    text: 'Las conformaciones tridimensionales se han calculado con geometria de distancias y campo '
-        + 'de fuerzas a partir de la estructura de cada molecula, y cada una declara su procedencia '
-        + 'en la pestana de fuentes de su ficha. La comprobacion de los identificadores de PubChem y '
-        + 'de las citas bibliograficas requiere acceso a la red y queda pendiente.' }));
+    text: 'Las conformaciones tridimensionales se han calculado con geometría de distancias y campo '
+        + 'de fuerzas a partir de la estructura de cada molécula, y cada una declara su procedencia '
+        + 'en la pestana de fuentes de su ficha. La comprobación de los identificadores de PubChem y '
+        + 'de las citas bibliográficas requiere acceso a la red y queda pendiente.' }));
 
   const byKind = new Map();
   for (const r of readings) {
@@ -69,14 +69,14 @@ function render(root) {
     el('div', { class: 'a-section__title', text: 'Bases de datos' }),
     el('ul', { style: { fontSize: 'var(--fs-md)' } }, [
       el('li', { text: 'PubChem (National Center for Biotechnology Information): identificadores de '
-        + 'compuesto y estructuras de referencia de cada molecula.' }),
+        + 'compuesto y estructuras de referencia de cada molécula.' }),
       el('li', { text: 'Los identificadores citados en cada ficha permiten comprobar la estructura '
         + 'contra la fuente original.' }),
     ]),
   ]));
 
   doc.appendChild(el('div', { class: 'a-section' }, [
-    el('div', { class: 'a-section__title', text: 'Tipografia' }),
+    el('div', { class: 'a-section__title', text: 'Tipografía' }),
     el('p', { style: { fontSize: 'var(--fs-md)' },
       text: 'Source Serif 4, Source Sans 3 y JetBrains Mono, con licencia SIL Open Font License 1.1, '
           + 'incrustadas como subconjuntos en el propio archivo.' }),

@@ -8,7 +8,7 @@ import { resolveSource } from '../../ui/inspector.js';
  *  3 riesgos generalmente superiores, 4 riesgo inaceptable. */
 
 const CATEGORY = {
-  1: { label: 'Sin restriccion', color: 'ring-c' },
+  1: { label: 'Sin restricción', color: 'ring-c' },
   2: { label: 'Ventajas superiores a los riesgos', color: 'fam-gestageno' },
   3: { label: 'Riesgos superiores a las ventajas', color: 'focus' },
   4: { label: 'Riesgo inaceptable', color: 'up' },
@@ -24,10 +24,10 @@ function render(root) {
   const rows = all('eligibility');
   const methods = Array.from(new Set(rows.map((r) => r.method)));
 
-  doc.appendChild(el('h1', { text: 'Elegibilidad clinica' }));
+  doc.appendChild(el('h1', { text: 'Elegibilidad clínica' }));
   doc.appendChild(el('p', { style: { fontSize: 'var(--fs-lg)', color: 'var(--ink-2)', maxWidth: '66ch' },
-    text: 'Criterios medicos de elegibilidad para el uso de anticonceptivos. La categoria responde a '
-        + 'una pregunta concreta: con esta condicion, conviene o no este metodo.' }));
+    text: 'Criterios médicos de elegibilidad para el uso de anticonceptivos. La categoría responde a '
+        + 'una pregunta concreta: con esta condición, conviene o no este método.' }));
 
   doc.appendChild(el('div', { style: { display: 'flex', gap: '8px', flexWrap: 'wrap', margin: '14px 0' } },
     Object.entries(CATEGORY).map(([n, c]) => el('span', { class: 'a-chip a-chip--sm',
@@ -35,14 +35,14 @@ function render(root) {
 
   const controls = el('div', { style: { display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '14px' } }, [
     el('input', {
-      type: 'search', placeholder: 'Filtrar por condicion…', value: query,
+      type: 'search', placeholder: 'Filtrar por condición…', value: query,
       'aria-label': 'Filtrar condiciones',
       style: { flex: '1', minWidth: '220px', border: '1px solid var(--line-strong)',
                borderRadius: 'var(--radius-sm)', padding: '6px 9px', background: 'var(--surface)' },
       onInput: debounce((e) => { query = e.target.value; render(root); }, 160),
     }),
     el('label', { class: 'a-field' }, [
-      el('span', { text: 'Metodo' }),
+      el('span', { text: 'Método' }),
       el('select', { onChange: (e) => { methodFilter = e.target.value; render(root); } }, [
         el('option', { value: 'todos', text: 'Todos' }),
         ...methods.map((m) => el('option', { value: m, selected: m === methodFilter ? true : null, text: m })),
@@ -68,7 +68,7 @@ function render(root) {
     doc.appendChild(el('div', { class: 'a-section' }, [
       el('div', { class: 'a-section__title', text: method }),
       el('table', {}, [
-        el('thead', {}, el('tr', {}, [el('th', { text: 'Condicion' }), el('th', { style: { width: '80px' }, text: 'Categoria' }),
+        el('thead', {}, el('tr', {}, [el('th', { text: 'Condición' }), el('th', { style: { width: '80px' }, text: 'Categoría' }),
           el('th', { text: 'Nota' })])),
         el('tbody', {}, items.map((r) => el('tr', {}, [
           el('td', { text: r.condition }),
@@ -85,17 +85,17 @@ function render(root) {
   doc.appendChild(el('div', { class: 'a-note', style: { marginTop: '16px' } }, [
     el('strong', { text: 'Fuente y alcance. ' }),
     (source ? source.citation + ' ' : '') +
-    'Se recoge una seleccion de pares metodo-condicion con valor docente, no la tabla completa. '
-    + 'Ante una decision clinica hay que consultar la edicion vigente del documento original y la '
-    + 'adaptacion nacional correspondiente.',
+    'Se recoge una selección de pares método-condición con valor docente, no la tabla completa. '
+    + 'Ante una decisión clínica hay que consultar la edición vigente del documento original y la '
+    + 'adaptación nacional correspondiente.',
   ]));
   view.appendChild(doc);
   root.appendChild(view);
 }
 
 export function mount(root) {
-  setStageBar([crumbs([{ label: 'Elegibilidad clinica', current: true }])]);
+  setStageBar([crumbs([{ label: 'Elegibilidad clínica', current: true }])]);
   render(root);
-  announce('Elegibilidad clinica');
+  announce('Elegibilidad clínica');
   return {};
 }

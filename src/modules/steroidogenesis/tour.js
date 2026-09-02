@@ -23,116 +23,116 @@ const STEPS = [
   {
     title: 'Un esqueleto de cuatro anillos',
     text: 'Todas las hormonas esteroideas comparten el mismo armazon: tres anillos de seis carbonos '
-        + 'y uno de cinco, el nucleo ciclopentanoperhidrofenantreno. Lo que las diferencia son los '
+        + 'y uno de cinco, el núcleo ciclopentanoperhidrofenantreno. Lo que las diferencia son los '
         + 'grupos que cuelgan de el y unos pocos dobles enlaces.',
     scene: (s) => molecule('mol:colesterol', 'rings'),
     link: { label: 'Ver el colesterol en el atlas', href: '#/atlas/mol_colesterol' },
   },
   {
     title: 'Los anillos se llaman A, B, C y D',
-    text: 'La numeracion es universal: el carbono 3 esta en el anillo A y el 17 en el D. Casi toda '
-        + 'la quimica que veras ocurre en esas dos posiciones, mas el carbono 11 y el 19.',
+    text: 'La numeración es universal: el carbono 3 esta en el anillo A y el 17 en el D. Casi toda '
+        + 'la química que veras ocurre en esas dos posiciones, más el carbono 11 y el 19.',
     scene: () => molecule('mol:testosterona', 'rings'),
     link: { label: 'Comparar estructuras', href: '#/interacciones/comparar/mol_testosterona/mol_estradiol' },
   },
   {
     title: 'Todo empieza en el colesterol',
-    text: 'La celula esteroidogenica toma colesterol de las lipoproteinas o lo sintetiza. El paso '
-        + 'que regula la produccion no es enzimatico: es el transporte del colesterol a la membrana '
-        + 'mitocondrial interna por la proteina StAR, y es lo que responde en minutos a LH, FSH y ACTH.',
+    text: 'La célula esteroidogénica toma colesterol de las lipoproteinas o lo sintetiza. El paso '
+        + 'que regula la producción no es enzimático: es el transporte del colesterol a la membrana '
+        + 'mitocondrial interna por la proteína StAR, y es lo que responde en minutos a LH, FSH y ACTH.',
     scene: () => molecule('mol:colesterol', 'element'),
-    link: { label: 'Ver la celula por dentro', href: '#/esteroidogenesis/escalas/tis_leydig' },
+    link: { label: 'Ver la célula por dentro', href: '#/esteroidogenesis/escalas/tis_leydig' },
   },
   {
     title: 'CYP11A1 corta la cadena lateral',
-    text: 'Dentro de la mitocondria, la enzima de escision retira seis carbonos de la cadena lateral '
-        + 'del colesterol y deja pregnenolona. Es el unico paso comun a toda la esteroidogenesis: '
-        + 'todo lo demas viene despues.',
+    text: 'Dentro de la mitocondria, la enzima de escisión retira seis carbonos de la cadena lateral '
+        + 'del colesterol y deja pregnenolona. Es el único paso comun a toda la esteroidogénesis: '
+        + 'todo lo demas viene después.',
     scene: () => morph('rx:col_preg'),
     link: { label: 'Ver el paso completo', href: '#/esteroidogenesis/paso/rx_col_preg' },
   },
   {
-    title: 'La bifurcacion: Δ5 o Δ4',
+    title: 'La bifurcación: Δ5 o Δ4',
     text: 'Desde la pregnenolona hay dos rutas paralelas. La 3β-HSD oxida el hidroxilo del carbono 3 '
         + 'y desplaza el doble enlace: eso convierte la serie Δ5 (arriba) en la serie Δ4 (abajo). '
-        + 'En el ser humano el camino hacia los androgenos prefiere quedarse arriba.',
+        + 'En el ser humano el camino hacia los andrógenos prefiere quedarse arriba.',
     scene: () => pathway(['mol:pregnenolona', 'mol:progesterona', 'mol:17oh_pregnenolona', 'mol:17oh_progesterona']),
     link: { label: 'Explorar el mapa', href: '#/esteroidogenesis/mapa' },
   },
   {
     title: 'CYP17A1 hace dos cosas distintas',
-    text: 'Una sola proteina con dos actividades. Como 17α-hidroxilasa anade un hidroxilo en el '
+    text: 'Una sola proteína con dos actividades. Como 17α-hidroxilasa añade un hidroxilo en el '
         + 'carbono 17; como 17,20-liasa corta el enlace entre los carbonos 17 y 20 y deja un '
-        + 'androgeno de 19 carbonos. El citocromo b5 inclina la balanza hacia la segunda.',
+        + 'andrógeno de 19 carbonos. El citocromo b5 inclina la balanza hacia la segunda.',
     scene: () => morph('rx:preg_17ohpreg'),
     link: { label: 'Ficha de CYP17A1', href: '#/esteroidogenesis/paso/rx_17ohpreg_dhea' },
   },
   {
-    title: 'La liasa da el primer androgeno',
+    title: 'La liasa da el primer andrógeno',
     text: 'Al cortar la cadena lateral de la 17α-hidroxipregnenolona aparece la DHEA. Fijate en que '
-        + 'la molecula pierde dos carbonos y un oxigeno: acaba de pasar de C21 a C19.',
+        + 'la molécula pierde dos carbonos y un oxigeno: acaba de pasar de C21 a C19.',
     scene: () => morph('rx:17ohpreg_dhea'),
     link: { label: 'Ver DHEA en el atlas', href: '#/atlas/mol_dhea' },
   },
   {
     title: 'De DHEA a testosterona',
-    text: 'Dos pasos mas: la 3β-HSD pasa la molecula a la serie Δ4 y la 17β-HSD3 reduce el grupo '
-        + 'ceto del carbono 17. El resultado es testosterona, el androgeno circulante principal.',
+    text: 'Dos pasos más: la 3β-HSD pasa la molécula a la serie Δ4 y la 17β-HSD3 reduce el grupo '
+        + 'ceto del carbono 17. El resultado es testosterona, el andrógeno circulante principal.',
     scene: () => pathway(['mol:dhea', 'mol:androstenediona', 'mol:testosterona']),
     link: { label: 'Ver testosterona', href: '#/atlas/mol_testosterona' },
   },
   {
-    title: 'La 5α-reductasa amplifica la senal',
-    text: 'En la piel genital, la prostata y el foliculo piloso, la testosterona se reduce a '
+    title: 'La 5α-reductasa amplifica la señal',
+    text: 'En la piel genital, la próstata y el folículo piloso, la testosterona se reduce a '
         + 'dihidrotestosterona. La composicion apenas cambia, pero la afinidad por el receptor sube '
-        + 'y la disociacion se hace mas lenta: el mismo mensaje, mucho mas alto.',
+        + 'y la disociación se hace más lenta: el mismo mensaje, mucho más alto.',
     scene: () => morph('rx:t_dht'),
-    link: { label: 'Deficit de 5α-reductasa', href: '#/esteroidogenesis/deficit/cond_def_5ar2' },
+    link: { label: 'Déficit de 5α-reductasa', href: '#/esteroidogenesis/deficit/cond_def_5ar2' },
   },
   {
     title: 'La aromatasa cambia de familia',
     text: 'Tres hidroxilaciones sucesivas eliminan el carbono 19 y convierten el anillo A en un '
-        + 'fenol aromatico. Ese unico paso transforma un androgeno en un estrogeno, y es el que '
+        + 'fenol aromático. Ese único paso transforma un andrógeno en un estrógeno, y es el que '
         + 'bloquean el letrozol y el anastrozol.',
     scene: () => morph('rx:t_e2'),
     link: { label: 'Ver la aromatasa', href: '#/esteroidogenesis/paso/rx_t_e2' },
   },
   {
-    title: 'Dos celulas para un estrogeno',
-    text: 'En el foliculo ovarico el trabajo esta repartido. La teca tiene CYP17A1 y fabrica '
+    title: 'Dos células para un estrógeno',
+    text: 'En el folículo ovárico el trabajo está repartido. La teca tiene CYP17A1 y fabrica '
         + 'androstenediona, pero no tiene aromatasa. La granulosa tiene aromatasa, pero no puede '
-        + 'fabricar androgenos. Ninguna de las dos produce estradiol por si sola.',
+        + 'fabricar andrógenos. Ninguna de las dos produce estradiol por si sola.',
     scene: () => pathway(['mol:androstenediona', 'mol:testosterona', 'mol:estrona', 'mol:estradiol'], 'tis:granulosa'),
     link: { label: 'Ver la granulosa', href: '#/esteroidogenesis/escalas/tis_granulosa' },
   },
   {
     title: 'La suprarrenal trabaja por zonas',
-    text: 'La misma glandula fabrica tres cosas distintas segun la zona. La glomerular no tiene '
+    text: 'La misma glándula fabrica tres cosas distintas según la zona. La glomerular no tiene '
         + 'CYP17A1 y termina en aldosterona; la fasciculada hidroxila en 17 pero corta poco y '
-        + 'termina en cortisol; la reticular tiene citocromo b5 alto y desvia el flujo a DHEA.',
+        + 'termina en cortisol; la reticular tiene citocromo b5 alto y desvía el flujo a DHEA.',
     scene: () => pathway(null, 'tis:reticular'),
     link: { label: 'Recorrer la suprarrenal', href: '#/esteroidogenesis/escalas/tis_reticular' },
   },
   {
-    title: 'Del torrente al organo blanco',
-    text: 'La hormona viaja unida a la SHBG y a la albumina, y solo la fraccion libre entra en la '
-        + 'celula diana. Alli encuentra su receptor: androgenos con AR, estrogenos con ERα y ERβ, '
+    title: 'Del torrente al órgano blanco',
+    text: 'La hormona viaja unida a la SHBG y a la albumina, y solo la fracción libre entra en la '
+        + 'célula diana. Alli encuentra su receptor: andrógenos con AR, estrógenos con ERα y ERβ, '
         + 'progesterona con PR. El efecto depende del receptor que haya en ese tejido.',
     scene: () => molecule('mol:estradiol', 'groups'),
-    link: { label: 'Ver los organos blanco', href: '#/organos' },
+    link: { label: 'Ver los órganos blanco', href: '#/organos' },
   },
   {
     title: 'Cuando un paso falla',
     text: 'Bloquea la 21-hidroxilasa y veras el patron completo: se acumula todo lo que hay antes '
-        + 'del bloqueo, falta lo que hay despues, y el flujo represado se desvia por la unica salida '
-        + 'libre, la androgenica. Ese es el mecanismo de la hiperplasia suprarrenal congenita.',
+        + 'del bloqueo, falta lo que hay después, y el flujo represado se desvía por la única salida '
+        + 'libre, la androgénica. Ese es el mecanismo de la hiperplasia suprarrenal congénita.',
     scene: () => pathway(null, null, true),
     link: { label: 'Abrir el simulador', href: '#/esteroidogenesis/deficit/cond_def_21oh' },
   },
   {
     title: 'El mapa completo',
     text: 'Ya tienes las piezas: un origen comun, dos series paralelas, una enzima con dos '
-        + 'actividades que decide el destino, una reduccion que amplifica y una aromatizacion que '
+        + 'actividades que decide el destino, una reducción que amplifica y una aromatización que '
         + 'cambia de familia. Lo demas es donde ocurre cada paso y que pasa cuando falta una enzima.',
     scene: () => pathway(),
     link: { label: 'Explorar por tu cuenta', href: '#/esteroidogenesis/mapa' },
@@ -228,7 +228,7 @@ function renderNarration() {
     marginBottom: '14px', maxWidth: '62ch' }, text: step.text }));
   const actions = el('div', { style: { display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' } }, [
     el('button', { class: 'a-btn', disabled: index === 0, onClick: () => goStep(index - 1) },
-      [el('span', { text: 'Atras' })]),
+      [el('span', { text: 'Atrás' })]),
     index < STEPS.length - 1
       ? el('button', { class: 'a-btn a-btn--primary', onClick: () => goStep(index + 1) },
           [el('span', { text: 'Siguiente' }), icon('chevron')])
@@ -252,7 +252,7 @@ function goStep(next) {
   updateProgress();
   history.replaceState(null, '', '#/esteroidogenesis/recorrido/' + (index + 1));
   setStageBar([
-    crumbs([{ label: 'Esteroidogenesis', href: '#/esteroidogenesis/mapa' },
+    crumbs([{ label: 'Esteroidogénesis', href: '#/esteroidogenesis/mapa' },
             { label: 'Recorrido guiado', current: true }]),
     toolbar([el('span', { class: 'a-src', text: 'Puedes girar y acercar la escena en cualquier paso' })]),
   ]);
@@ -270,7 +270,7 @@ export function mount(host, ctx) {
   const wanted = Number(ctx.params.step || 1);
   index = Number.isFinite(wanted) ? Math.max(0, Math.min(STEPS.length - 1, wanted - 1)) : 0;
 
-  stage = mountStage(host, { label: 'Recorrido guiado por la esteroidogenesis',
+  stage = mountStage(host, { label: 'Recorrido guiado por la esteroidogénesis',
     engine: { autoSpin: false, quality: 3 } });
   stage.engine.renderer.fogStrength = 0.2;
 

@@ -59,7 +59,7 @@ function render(root) {
     const organs = all('organs').filter((o) => (o.targets || []).some((t) => t.receptor === rec.id));
     if (organs.length) {
       doc.appendChild(el('div', { class: 'a-section' }, [
-        el('div', { class: 'a-section__title', text: 'Donde actua' }),
+        el('div', { class: 'a-section__title', text: 'Dónde actúa' }),
         el('table', {}, [
           el('thead', {}, el('tr', {}, [el('th', { text: 'Territorio' }), el('th', { text: 'Hormona' }), el('th', { text: 'Efecto' })])),
           el('tbody', {}, organs.flatMap((o) => (o.targets || []).filter((t) => t.receptor === rec.id).map((t) =>

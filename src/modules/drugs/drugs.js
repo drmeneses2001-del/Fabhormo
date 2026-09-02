@@ -9,10 +9,10 @@ import { resolveSource } from '../../ui/inspector.js';
  *  por mecanismo, con la enzima compartida como nexo cuando lo hay. */
 
 const KIND_LABEL = {
-  inhibicion_enzimatica: 'Inhibicion enzimatica', inhibicion_cyp: 'Inhibicion de CYP3A4',
-  induccion_cyp: 'Induccion de CYP3A4', sustrato: 'Metabolismo', antagonismo: 'Antagonismo',
-  modulacion_selectiva: 'Modulacion selectiva', sinergia_clinica: 'Relacion clinica',
-  precursor: 'Profarmaco', otro: 'Otra relacion',
+  inhibicion_enzimatica: 'Inhibición enzimática', inhibicion_cyp: 'Inhibición de CYP3A4',
+  induccion_cyp: 'Inducción de CYP3A4', sustrato: 'Metabolismo', antagonismo: 'Antagonismo',
+  modulacion_selectiva: 'Modulación selectiva', sinergia_clinica: 'Relación clínica',
+  precursor: 'Profarmaco', otro: 'Otra relación',
 };
 
 let query = '';
@@ -22,21 +22,21 @@ function render(root) {
   const view = el('div', { class: 'a-view a-view--scroll' });
   const doc = el('div', { class: 'a-view--doc' });
 
-  doc.appendChild(el('h1', { text: 'Interacciones farmacologicas' }));
+  doc.appendChild(el('h1', { text: 'Interacciones farmacológicas' }));
   doc.appendChild(el('p', { style: { fontSize: 'var(--fs-lg)', color: 'var(--ink-2)', maxWidth: '66ch' },
-    text: 'Cada entrada nombra el mecanismo por el que dos entidades se afectan. Cuando la relacion '
+    text: 'Cada entrada nombra el mecanismo por el que dos entidades se afectan. Cuando la relación '
         + 'pasa por una enzima, la enzima aparece como nodo: es donde se entiende por que un '
         + 'inductor de CYP3A4 puede hacer fallar un anticonceptivo.' }));
 
   doc.appendChild(el('div', { class: 'a-note', style: { margin: '14px 0' },
-    text: 'Aviso practico: los inductores potentes de CYP3A4, entre ellos rifampicina, '
+    text: 'Aviso práctico: los inductores potentes de CYP3A4, entre ellos rifampicina, '
         + 'carbamazepina, fenitoina, fenobarbital, efavirenz y la hierba de San Juan, reducen la '
-        + 'exposicion a etinilestradiol y a los gestagenos y pueden hacer fallar la anticoncepcion '
-        + 'hormonal. La conducta habitual es usar un metodo que no dependa de esa via, como el DIU '
+        + 'exposición a etinilestradiol y a los gestágenos y pueden hacer fallar la anticoncepción '
+        + 'hormonal. La conducta habitual es usar un método que no dependa de esa vía, como el DIU '
         + 'de cobre o el de levonorgestrel.' }));
 
   const search = el('input', {
-    type: 'search', placeholder: 'Filtrar por farmaco, enzima o mecanismo…',
+    type: 'search', placeholder: 'Filtrar por fármaco, enzima o mecanismo…',
     'aria-label': 'Filtrar interacciones', value: query,
     style: { width: '100%', maxWidth: '420px', border: '1px solid var(--line-strong)',
              borderRadius: 'var(--radius-sm)', padding: '6px 9px', background: 'var(--surface)',
@@ -85,8 +85,8 @@ function render(root) {
 }
 
 export function mount(root) {
-  setStageBar([crumbs([{ label: 'Interacciones farmacologicas', current: true }])]);
+  setStageBar([crumbs([{ label: 'Interacciones farmacológicas', current: true }])]);
   render(root);
-  announce('Interacciones farmacologicas');
+  announce('Interacciones farmacológicas');
   return {};
 }

@@ -33,10 +33,10 @@ function build() {
   scene.add(pathNode(toPath3(cellOutline(16, 0.26, 31), -2), {
     stroke: color, fill: null, lineWidth: 2, layer: -3, id: 'lbd',
   }));
-  scene.add(labelNode('Dominio de union al ligando · esquema', {
+  scene.add(labelNode('Dominio de unión al ligando · esquema', {
     position: [0, 18.5, 0], size: 11, color, always: true, layer: 3, id: 'lbd:lbl',
   }));
-  scene.add(labelNode('Sin estructura cristalografica cargada', {
+  scene.add(labelNode('Sin estructura cristalográfica cargada', {
     position: [0, -18.5, 0], size: 10, color: token('ink-3'), always: true, layer: 3, id: 'lbd:note',
   }));
 
@@ -102,7 +102,7 @@ function renderPanel() {
   }
   panelBody.appendChild(el('div', { class: 'a-note', style: { marginTop: '10px' },
     text: 'La afinidad relativa de cada ligando no se muestra como cifra: no hay una fuente '
-        + 'comprobada disponible en esta compilacion, y una cifra sin fuente no entra en el atlas.' }));
+        + 'comprobada disponible en esta compilación, y una cifra sin fuente no entra en el atlas.' }));
   panelBody.appendChild(el('div', { style: { display: 'flex', gap: '7px', marginTop: '12px', flexWrap: 'wrap' } }, [
     el('a', { class: 'a-btn', href: '#/receptores/' + slugFromId(recId) },
       [icon('receptor'), el('span', { text: 'Ficha del receptor' })]),
@@ -146,7 +146,7 @@ export function mount(host, ctx) {
   stage.engine.handleResize(true);
 
   setStageBar([
-    crumbs([{ label: 'Interaccion bioquimica', href: '#/interacciones/mapa' },
+    crumbs([{ label: 'Interacción bioquímica', href: '#/interacciones/mapa' },
             { label: 'Receptor y ligando', current: true }]),
     toolbar([el('a', { class: 'a-btn', href: '#/receptores' },
       [icon('receptor'), el('span', { text: 'Todos los receptores' })])]),
