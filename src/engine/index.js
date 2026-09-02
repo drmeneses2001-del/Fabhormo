@@ -284,7 +284,7 @@ export class Engine {
     const s = this.scaleLevel;
     if (s >= lo && s <= hi) return 1;
     const d = s < lo ? lo - s : s - hi;
-    return clamp(1 - d / 0.6, 0, 1);
+    return clamp(1 - d / 0.32, 0, 1);
   }
 
   worldPoint(node, i, out) {

@@ -42,8 +42,8 @@ export class Renderer2D {
     this.canvas.height = Math.round(h * d);
     this.canvas.style.width = w + 'px';
     this.canvas.style.height = h + 'px';
-    this._labelCols = Math.ceil(w / 58);
-    this._labelRows = Math.ceil(h / 20);
+    this._labelCols = Math.ceil(w / 46);
+    this._labelRows = Math.ceil(h / 16);
     this.labelGrid = new Uint8Array(this._labelCols * this._labelRows);
     return true;
   }
@@ -372,8 +372,8 @@ export class Renderer2D {
     const y = it.y + (st.offsetY || 0);
     // Rejilla de ocupacion: evita que las etiquetas se pisen sin coste de layout.
     if (this.labelGrid && st.avoidCollision !== false) {
-      const col = Math.floor(clamp(it.x, 0, this.width - 1) / 58);
-      const row = Math.floor(clamp(y, 0, this.height - 1) / 20);
+      const col = Math.floor(clamp(it.x, 0, this.width - 1) / 46);
+      const row = Math.floor(clamp(y, 0, this.height - 1) / 16);
       const cell = row * this._labelCols + col;
       if (this.labelGrid[cell]) return;
       this.labelGrid[cell] = 1;

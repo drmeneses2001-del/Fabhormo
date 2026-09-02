@@ -73,8 +73,14 @@ const must = (id, where) => {
 
 /* ------------------------------------------------- referencias cruzadas --- */
 
+const molById = new Map(molecules.map((m) => [m.id, m]));
 for (const r of reactions) {
   must(r.substrate, r.id); must(r.product, r.id); must(r.enzyme, r.id);
+  // La vista del paso enzimatico depende de la correspondencia atomica: si falta,
+  // la animacion no se puede construir y la reaccion queda muda.
+  const sub = molById.get(r.substrate), prod = molById.get(r.product);
+  const has3d = sub && prod && sub.atoms.xyz.length && prod.atoms.xyz.length;
+  if (has3d && !r.atomMap) fail(`${r.id}: sin correspondencia atomica (ejecuta tools/gen-atommaps.py)`);
   for (const a of r.altEnzymes || []) must(a, r.id);
   for (const t of r.tissues || []) must(t, r.id);
   if (!r.source || !r.source.length) fail(`${r.id}: sin fuente`);
