@@ -131,3 +131,12 @@ button.a-chip[data-active="true"]:hover { background: var(--chip-color, var(--ac
   border: 1px solid var(--line-strong); border-radius: 3px; padding: 0 4px; color: var(--ink-3);
 }
 .a-badge--warn { border-color: var(--focus); color: var(--focus); }
+
+.a-view--split { display: flex; }
+.a-stage__panel {
+  flex: 0 0 258px; min-width: 0; display: flex; flex-direction: column;
+  background: var(--surface); border-right: 1px solid var(--line); overflow: hidden;
+}
+.a-stage__canvas { position: relative; flex: 1; min-width: 0; overflow: hidden; }
+@media (max-width: 860px) { .a-stage__panel { flex-basis: 200px; } }
+@media (max-width: 640px) { .a-view--split { flex-direction: column; } .a-stage__panel { flex: 0 0 168px; border-right: 0; border-bottom: 1px solid var(--line); } }

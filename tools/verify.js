@@ -84,12 +84,14 @@ async function run() {
         await page.evaluate((r) => { if (location.hash !== r) location.hash = r; }, route);
         await page.waitForFunction(() => window.__atlas && window.__atlas.ready === true, { timeout: 15000 });
         await page.waitForTimeout(450);
-        const fps = await measureFps(page);
-        const title = await page.evaluate(() => (window.__atlas && window.__atlas.routeTitle) || document.title);
         const slug = route.replace(/[^\w]+/g, '_').replace(/^_|_$/g, '') || 'home';
         if (SHOTS && variant === 'standalone') {
+          await page.evaluate(() => { if (window.__atlas && window.__atlas.engine) window.__atlas.engine.autoSpin = false; });
+          await page.waitForTimeout(120);
           await page.screenshot({ path: path.join(OUT, `${slug}.png`), scale: 'css' });
         }
+        const fps = await measureFps(page);
+        const title = await page.evaluate(() => (window.__atlas && window.__atlas.routeTitle) || document.title);
         results.push({ route, title, ms: Date.now() - t0, fps, errors });
         if (errors.length) report.ok = false;
       } catch (err) {
