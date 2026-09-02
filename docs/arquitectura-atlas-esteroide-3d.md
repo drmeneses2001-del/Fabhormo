@@ -41,6 +41,22 @@
 8. **Presupuestos duros**: 60 fps interactivo / 30 fps mínimo, ≤ 3 000 primitivas por frame,
    archivo final ≤ 4,5 MB (objetivo 3,5 MB), interactivo en < 1,5 s desde `file://` (§2).
 
+### 0.0 Estado de ejecución (actualizado al cierre de la Fase 8)
+
+Las ocho fases están construidas y verificadas. Dos desviaciones respecto a este plano, ambas
+documentadas en `docs/decisiones/`:
+
+- **ADR-0002.** El entorno de compilación no tiene acceso a PubChem ni a RCSB PDB. Las estructuras
+  se generan con RDKit desde SMILES y se verifican por fórmula y clave InChI; las vistas que
+  preveían trazas Cα usan esquemas declarados como tales.
+- **ADR-0003.** Toda la geometría no molecular se genera por código y cada vista esquemática lo
+  dice en pantalla.
+
+Lo medido frente a los presupuestos de §2.2: artefacto de 0,66 MB de 4,5 MB; 0,11 s hasta
+interactivo de 1,5 s; 10 MB de memoria de 150 MB; 60 fps en escena molecular y 44 fps en la escena
+más pesada, sobre el mínimo de 30. Ver `docs/fuentes.md` para el estado de verificación de los
+datos.
+
 ### 0.1 Estado de la base previa (hallazgo de la Fase 1)
 
 El repositorio `Fabhormo` solo contiene un README vacío. La carpeta `hormonas/` de la versión

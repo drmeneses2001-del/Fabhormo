@@ -1,14 +1,14 @@
 {
-  "generated": "2026-09-02T20:25:41.069Z",
+  "generated": "2026-09-02T20:34:24.580Z",
   "variants": {
     "standalone": [
       {
         "route": "#/",
         "title": "Inicio",
-        "ms": 3469,
+        "ms": 3592,
         "fps": {
-          "fps": 49.8649490961978,
-          "ms": 20.054166666666667,
+          "fps": 48.53387259858443,
+          "ms": 20.604166666666668,
           "primitives": 553,
           "quality": 3
         },
@@ -17,10 +17,10 @@
       {
         "route": "#/esteroidogenesis/mapa",
         "title": "Mapa de la via",
-        "ms": 3753,
+        "ms": 3970,
         "fps": {
-          "fps": 43.658589827554486,
-          "ms": 22.904999999996896,
+          "fps": 40.02801961372464,
+          "ms": 24.982500000003103,
           "primitives": 845,
           "quality": 3
         },
@@ -29,10 +29,10 @@
       {
         "route": "#/esteroidogenesis/escalas/tis_leydig",
         "title": "Donde ocurre",
-        "ms": 2764,
+        "ms": 2845,
         "fps": {
-          "fps": 60.43513295730384,
-          "ms": 16.546666666663562,
+          "fps": 60.02400960383594,
+          "ms": 16.660000000001553,
           "primitives": 4,
           "quality": 3
         },
@@ -41,10 +41,10 @@
       {
         "route": "#/esteroidogenesis/deficit/cond_def_21oh",
         "title": "Simulador de deficits",
-        "ms": 3323,
+        "ms": 3698,
         "fps": {
-          "fps": 48.7408610885459,
-          "ms": 20.516666666666666,
+          "fps": 41.61176225813432,
+          "ms": 24.031666666665114,
           "primitives": 768,
           "quality": 3
         },
@@ -53,10 +53,10 @@
       {
         "route": "#/esteroidogenesis/recorrido/1",
         "title": "Recorrido guiado",
-        "ms": 3007,
+        "ms": 2747,
         "fps": {
-          "fps": 59.04349537491537,
-          "ms": 16.936666666669772,
+          "fps": 60.35003017503205,
+          "ms": 16.569999999995343,
           "primitives": 59,
           "quality": 3
         },
@@ -65,10 +65,10 @@
       {
         "route": "#/atlas",
         "title": "Atlas molecular",
-        "ms": 2784,
+        "ms": 2783,
         "fps": {
-          "fps": 60.28333165880762,
-          "ms": 16.58833333333023,
+          "fps": 60.429046228226035,
+          "ms": 16.54833333333178,
           "primitives": 99,
           "quality": 3
         },
@@ -77,10 +77,10 @@
       {
         "route": "#/atlas/mol_testosterona",
         "title": "Atlas molecular",
-        "ms": 2749,
+        "ms": 2734,
         "fps": {
-          "fps": 60.37128339286047,
-          "ms": 16.564166666668218,
+          "fps": 60.15640665731462,
+          "ms": 16.623333333331782,
           "primitives": 101,
           "quality": 3
         },
@@ -89,10 +89,10 @@
       {
         "route": "#/organos",
         "title": "Organos blanco",
-        "ms": 2782,
+        "ms": 2699,
         "fps": {
-          "fps": 60.38343481105583,
-          "ms": 16.560833333331782,
+          "fps": 60.43817678166709,
+          "ms": 16.545833333333334,
           "primitives": 46,
           "quality": 3
         },
@@ -101,10 +101,10 @@
       {
         "route": "#/interacciones/mapa",
         "title": "Mapa de interacciones",
-        "ms": 3476,
+        "ms": 3386,
         "fps": {
-          "fps": 45.247162625850024,
-          "ms": 22.10083333333023,
+          "fps": 46.36068613816485,
+          "ms": 21.569999999995343,
           "primitives": 1842,
           "quality": 3
         },
@@ -113,10 +113,10 @@
       {
         "route": "#/interacciones/comparar/mol_testosterona/mol_dihidrotestosterona",
         "title": "Comparador",
-        "ms": 2739,
+        "ms": 2730,
         "fps": {
-          "fps": 60.45949214024333,
-          "ms": 16.54000000000621,
+          "fps": 60.150375939849624,
+          "ms": 16.625,
           "primitives": 92,
           "quality": 3
         },
@@ -125,49 +125,49 @@
       {
         "route": "#/receptores",
         "title": "Receptores",
-        "ms": 662,
+        "ms": 699,
         "fps": null,
         "errors": []
       },
       {
         "route": "#/ciclo",
         "title": "Ciclo hormonal",
-        "ms": 734,
+        "ms": 751,
         "fps": null,
         "errors": []
       },
       {
         "route": "#/laboratorio",
         "title": "Laboratorio",
-        "ms": 702,
+        "ms": 696,
         "fps": null,
         "errors": []
       },
       {
         "route": "#/farmacos",
         "title": "Interacciones farmacologicas",
-        "ms": 689,
+        "ms": 695,
         "fps": null,
         "errors": []
       },
       {
         "route": "#/elegibilidad",
         "title": "Elegibilidad clinica",
-        "ms": 700,
+        "ms": 708,
         "fps": null,
         "errors": []
       },
       {
         "route": "#/lecturas",
         "title": "Lecturas y fuentes",
-        "ms": 682,
+        "ms": 685,
         "fps": null,
         "errors": []
       },
       {
         "route": "#/autoevaluacion",
         "title": "Autoevaluacion",
-        "ms": 669,
+        "ms": 678,
         "fps": null,
         "errors": []
       }
@@ -176,10 +176,10 @@
       {
         "route": "#/",
         "title": "Inicio",
-        "ms": 3112,
+        "ms": 3282,
         "fps": {
-          "fps": 51.02691669855445,
-          "ms": 19.597500000001553,
+          "fps": 47.69664931037888,
+          "ms": 20.965833333336438,
           "primitives": 553,
           "quality": 3
         },
@@ -188,10 +188,10 @@
       {
         "route": "#/esteroidogenesis/mapa",
         "title": "Mapa de la via",
-        "ms": 3204,
+        "ms": 3316,
         "fps": {
-          "fps": 45.54079696394687,
-          "ms": 21.958333333333332,
+          "fps": 43.909400270783614,
+          "ms": 22.77416666666201,
           "primitives": 845,
           "quality": 3
         },
@@ -200,10 +200,10 @@
       {
         "route": "#/esteroidogenesis/escalas/tis_leydig",
         "title": "Donde ocurre",
-        "ms": 2543,
+        "ms": 2550,
         "fps": {
-          "fps": 60.18054162487462,
-          "ms": 16.616666666666667,
+          "fps": 60.18355985755433,
+          "ms": 16.615833333336436,
           "primitives": 4,
           "quality": 3
         },
@@ -212,10 +212,10 @@
       {
         "route": "#/esteroidogenesis/deficit/cond_def_21oh",
         "title": "Simulador de deficits",
-        "ms": 2885,
+        "ms": 3393,
         "fps": {
-          "fps": 50.76571621963033,
-          "ms": 19.69833333333954,
+          "fps": 42.09640075772696,
+          "ms": 23.755000000004657,
           "primitives": 768,
           "quality": 3
         },
@@ -224,10 +224,10 @@
       {
         "route": "#/esteroidogenesis/recorrido/1",
         "title": "Recorrido guiado",
-        "ms": 2511,
+        "ms": 2518,
         "fps": {
-          "fps": 60.31666247800955,
-          "ms": 16.579166666666666,
+          "fps": 60.231892787236475,
+          "ms": 16.602499999998447,
           "primitives": 59,
           "quality": 3
         },
@@ -238,8 +238,8 @@
         "title": "Atlas molecular",
         "ms": 2516,
         "fps": {
-          "fps": 60.38647342994604,
-          "ms": 16.56000000000155,
+          "fps": 60.23793986246797,
+          "ms": 16.60083333333023,
           "primitives": 99,
           "quality": 3
         },
@@ -248,10 +248,10 @@
       {
         "route": "#/atlas/mol_testosterona",
         "title": "Atlas molecular",
-        "ms": 2484,
+        "ms": 2499,
         "fps": {
-          "fps": 60.343960575290396,
-          "ms": 16.571666666663564,
+          "fps": 59.994000599934424,
+          "ms": 16.668333333334886,
           "primitives": 101,
           "quality": 3
         },
@@ -262,8 +262,8 @@
         "title": "Organos blanco",
         "ms": 2467,
         "fps": {
-          "fps": 60.0180054016093,
-          "ms": 16.66166666666977,
+          "fps": 60.06006006006006,
+          "ms": 16.65,
           "primitives": 46,
           "quality": 3
         },
@@ -272,10 +272,10 @@
       {
         "route": "#/interacciones/mapa",
         "title": "Mapa de interacciones",
-        "ms": 3284,
+        "ms": 3563,
         "fps": {
-          "fps": 43.768464821108296,
-          "ms": 22.84749999999379,
+          "fps": 39.66548772022853,
+          "ms": 25.21083333333178,
           "primitives": 1842,
           "quality": 3
         },
@@ -284,10 +284,10 @@
       {
         "route": "#/interacciones/comparar/mol_testosterona/mol_dihidrotestosterona",
         "title": "Comparador",
-        "ms": 2498,
+        "ms": 2486,
         "fps": {
-          "fps": 60.277275467154524,
-          "ms": 16.589999999998447,
+          "fps": 60.15339114741471,
+          "ms": 16.624166666669772,
           "primitives": 92,
           "quality": 3
         },
@@ -303,42 +303,42 @@
       {
         "route": "#/ciclo",
         "title": "Ciclo hormonal",
-        "ms": 506,
+        "ms": 486,
         "fps": null,
         "errors": []
       },
       {
         "route": "#/laboratorio",
         "title": "Laboratorio",
-        "ms": 476,
+        "ms": 489,
         "fps": null,
         "errors": []
       },
       {
         "route": "#/farmacos",
         "title": "Interacciones farmacologicas",
-        "ms": 477,
+        "ms": 476,
         "fps": null,
         "errors": []
       },
       {
         "route": "#/elegibilidad",
         "title": "Elegibilidad clinica",
-        "ms": 471,
+        "ms": 467,
         "fps": null,
         "errors": []
       },
       {
         "route": "#/lecturas",
         "title": "Lecturas y fuentes",
-        "ms": 466,
+        "ms": 462,
         "fps": null,
         "errors": []
       },
       {
         "route": "#/autoevaluacion",
         "title": "Autoevaluacion",
-        "ms": 465,
+        "ms": 464,
         "fps": null,
         "errors": []
       }

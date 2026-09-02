@@ -7,7 +7,7 @@
   "scripts": {
     "build": "node tools/build.js",
     "verify": "node tools/verify.js",
-    "test": "node --test test/",
+    "test": "node --test test/*.test.js",
     "size": "node tools/size-report.js",
     "data": "python3 tools/gen-molecules.py && python3 tools/gen-pathway.py && python3 tools/gen-organs.py && python3 tools/gen-clinical.py && python3 tools/gen-atommaps.py && node tools/validate.js",
     "dev": "python3 -m http.server 8123 --directory src"

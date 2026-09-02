@@ -1,13 +1,13 @@
 {
-  "generated": "2026-09-02T20:27:03.391Z",
+  "generated": "2026-09-02T20:34:23.907Z",
   "bundler": "esbuild",
   "minify": true,
-  "bytes": 673339,
+  "bytes": 673465,
   "budget": 4718592,
   "target": 3670016,
   "breakdown": {
-    "codigo JS": 190134,
-    "CSS + fuentes": 105645,
+    "codigo JS": 189623,
+    "CSS + fuentes": 106282,
     "datos": 370938,
     "iconos + shell": 6013
   }

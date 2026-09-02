@@ -281,13 +281,11 @@ export function mount(host, ctx) {
   });
   stage.engine.renderer.fogStrength = 0.1;
 
-  const side = el('div', { style: { position: 'absolute', right: '0', top: '0', bottom: '0',
-    width: '330px', background: 'var(--surface)', borderLeft: '1px solid var(--line)',
-    overflowY: 'auto', zIndex: '4' } });
+  const side = el('div', { class: 'a-stage__aside' });
   panelBody = el('div', { style: { padding: '14px' } });
   side.appendChild(panelBody);
   stage.canvasWrap.appendChild(side);
-  stage.canvas.dataset.reserveRight = '330';
+  stage.canvas.dataset.reserveRight = window.innerWidth > 900 ? '330' : '0';
   stage.engine.handleResize(true);
 
   stage.engine.on('select', (sel) => {

@@ -28,6 +28,8 @@ export function openInspector(id, options) {
   const shell = $('#app');
   const host = $('#inspector');
   if (!entity) { closeInspector(); return; }
+  // En pantalla estrecha la ficha tapa la escena: solo se abre si se pide.
+  if (window.innerWidth <= 700 && !(options && options.force)) { currentId = id; return; }
   currentId = id;
   if (options && options.tab) activeTab = options.tab;
   shell.dataset.inspector = 'true';

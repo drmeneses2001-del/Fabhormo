@@ -141,7 +141,17 @@
   .a-shell .a-chapter__desc, .a-shell .a-search__label, .a-shell .a-search__kbd { display: none; }
 }
 @media (max-width: 700px) {
-  .a-shell { grid-template-columns: 0 minmax(0, 1fr) 0; }
+  /* El rail pasa a posicion fija y la ficha a hoja inferior: ninguno de los dos
+     ocupa columna, asi que la rejilla se queda con una sola para el escenario. */
+  .a-shell, .a-shell[data-inspector="true"], .a-shell[data-collapsed="true"] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .a-shell[data-inspector="false"] .a-inspector { display: none; }
+  .a-shell[data-inspector="true"] .a-inspector {
+    left: 0; right: 0; top: auto; bottom: 0; width: auto; height: 62dvh;
+    border-left: 0; border-top: 1px solid var(--line); border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  .a-stage__bar { min-height: 42px; padding: 4px var(--sp-3); }
   .a-rail { position: fixed; z-index: 40; left: 0; top: 0; bottom: 0; width: var(--rail-w); transform: translateX(-100%); transition: transform var(--dur) var(--ease); }
   .a-shell[data-mobilerail="true"] .a-rail { transform: none; box-shadow: var(--shadow); }
   .a-shell[data-mobilerail="true"] .a-brand, .a-shell[data-mobilerail="true"] .a-rail__label,

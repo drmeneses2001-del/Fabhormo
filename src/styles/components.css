@@ -140,3 +140,16 @@ button.a-chip[data-active="true"]:hover { background: var(--chip-color, var(--ac
 .a-stage__canvas { position: relative; flex: 1; min-width: 0; overflow: hidden; }
 @media (max-width: 860px) { .a-stage__panel { flex-basis: 200px; } }
 @media (max-width: 640px) { .a-view--split { flex-direction: column; } .a-stage__panel { flex: 0 0 168px; border-right: 0; border-bottom: 1px solid var(--line); } }
+
+/* Panel lateral derecho de los modulos con escena. En pantallas estrechas pasa a
+   ser una hoja inferior para no tapar el lienzo. */
+.a-stage__aside {
+  position: absolute; right: 0; top: 0; bottom: 0; width: 336px; z-index: 4;
+  background: var(--surface); border-left: 1px solid var(--line); overflow-y: auto;
+}
+@media (max-width: 900px) {
+  .a-stage__aside {
+    left: 0; right: 0; top: auto; width: auto; height: 44%;
+    border-left: 0; border-top: 1px solid var(--line);
+  }
+}

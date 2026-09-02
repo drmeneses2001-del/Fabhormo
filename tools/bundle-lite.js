@@ -26,10 +26,33 @@ function parseSpecifiers(text) {
   });
 }
 
+/** Une los import que ocupan varias lineas en una sola sentencia, conservando
+ *  el numero de linea original para los mensajes de error. */
+function coalesceImports(source) {
+  const raw = source.split('\n');
+  const out = [];
+  for (let i = 0; i < raw.length; i++) {
+    let line = raw[i];
+    if (/^\s*import\b/.test(line) && !/from\s+['"][^'"]+['"]\s*;?\s*$/.test(line)
+        && !/^\s*import\s+['"][^'"]+['"]\s*;?\s*$/.test(line)) {
+      const start = i;
+      while (i + 1 < raw.length && !/from\s+['"][^'"]+['"]\s*;?\s*$/.test(line)) {
+        i++;
+        line = line.replace(/\s*$/, ' ') + raw[i].trim();
+      }
+      out.push(line.replace(/\s+/g, ' '));
+      for (let k = start; k < i; k++) out.push('');
+      continue;
+    }
+    out.push(line);
+  }
+  return out;
+}
+
 function transform(source, file) {
   const deps = [];
   const exported = [];
-  const lines = source.split('\n');
+  const lines = coalesceImports(source);
   const out = lines.map((line, i) => {
     const where = `${file}:${i + 1}`;
     if (/^\s*import\b/.test(line)) {
