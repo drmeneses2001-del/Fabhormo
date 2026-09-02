@@ -1,0 +1,37 @@
+[
+  {
+    "family": "AtlasSerif",
+    "weight": 600,
+    "file": "raw/fonts/AtlasSerif-600.woff2",
+    "bytes": 14416,
+    "source": "@fontsource/source-serif-4 (SIL Open Font License 1.1)"
+  },
+  {
+    "family": "AtlasSerif",
+    "weight": 400,
+    "file": "raw/fonts/AtlasSerif-400.woff2",
+    "bytes": 13480,
+    "source": "@fontsource/source-serif-4 (SIL Open Font License 1.1)"
+  },
+  {
+    "family": "AtlasSans",
+    "weight": 400,
+    "file": "raw/fonts/AtlasSans-400.woff2",
+    "bytes": 9360,
+    "source": "@fontsource/source-sans-3 (SIL Open Font License 1.1)"
+  },
+  {
+    "family": "AtlasSans",
+    "weight": 600,
+    "file": "raw/fonts/AtlasSans-600.woff2",
+    "bytes": 9364,
+    "source": "@fontsource/source-sans-3 (SIL Open Font License 1.1)"
+  },
+  {
+    "family": "AtlasMono",
+    "weight": 400,
+    "file": "raw/fonts/AtlasMono-400.woff2",
+    "bytes": 17236,
+    "source": "@fontsource/jetbrains-mono (SIL Open Font License 1.1)"
+  }
+]

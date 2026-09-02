@@ -1,0 +1,38 @@
+{
+  "generated": "2026-09-02T18:58:56.597Z",
+  "variants": {
+    "standalone": [
+      {
+        "route": "#/",
+        "title": "Inicio",
+        "ms": 595,
+        "fps": null,
+        "errors": []
+      },
+      {
+        "route": "#/atlas",
+        "title": "Atlas molecular",
+        "ms": 485,
+        "fps": null,
+        "errors": []
+      }
+    ],
+    "artifact": [
+      {
+        "route": "#/",
+        "title": "Inicio",
+        "ms": 556,
+        "fps": null,
+        "errors": []
+      },
+      {
+        "route": "#/atlas",
+        "title": "Atlas molecular",
+        "ms": 465,
+        "fps": null,
+        "errors": []
+      }
+    ]
+  },
+  "ok": true
+}

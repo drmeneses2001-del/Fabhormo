@@ -1,0 +1,49 @@
+<div id="app" class="a-shell" data-collapsed="false">
+  <a class="a-skip sr-only" href="#stage">Ir al contenido</a>
+
+  <nav class="a-rail" id="rail" aria-label="Navegacion principal">
+    <div class="a-rail__head">
+      <button class="a-rail__toggle" id="railToggle" aria-label="Contraer navegacion" aria-expanded="true">
+        <svg class="a-ico" aria-hidden="true"><use href="#i-menu"></use></svg>
+      </button>
+      <div class="a-brand">
+        <span class="a-brand__title">Atlas Esteroide</span>
+        <span class="a-brand__sub">3D</span>
+      </div>
+    </div>
+
+    <button class="a-search" id="searchBtn" aria-label="Buscar (Control K)">
+      <svg class="a-ico" aria-hidden="true"><use href="#i-search"></use></svg>
+      <span class="a-search__label">Buscar</span>
+      <kbd class="a-search__kbd">⌘K</kbd>
+    </button>
+
+    <div class="a-rail__scroll">
+      <div class="a-rail__chapter" id="railChapter"></div>
+      <div class="a-rail__group" id="railModules"></div>
+    </div>
+
+    <div class="a-rail__foot">
+      <button class="a-rail__item" id="themeBtn" aria-label="Cambiar tema">
+        <svg class="a-ico" aria-hidden="true"><use href="#i-theme"></use></svg>
+        <span class="a-rail__label">Tema</span>
+      </button>
+      <a class="a-rail__item" href="#/lecturas" data-route="#/lecturas">
+        <svg class="a-ico" aria-hidden="true"><use href="#i-book"></use></svg>
+        <span class="a-rail__label">Fuentes</span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="a-stage" id="stage" tabindex="-1">
+    <header class="a-stage__bar" id="stageBar"></header>
+    <div class="a-stage__body" id="stageBody"></div>
+    <div class="a-stage__overlay" id="stageOverlay" aria-hidden="true"></div>
+  </main>
+
+  <aside class="a-inspector" id="inspector" aria-label="Ficha" data-open="false"></aside>
+
+  <div class="a-tooltip" id="tooltip" role="tooltip" hidden></div>
+  <div class="a-dialog" id="dialog" role="dialog" aria-modal="true" hidden></div>
+  <div class="sr-only" id="live" aria-live="polite"></div>
+</div>
