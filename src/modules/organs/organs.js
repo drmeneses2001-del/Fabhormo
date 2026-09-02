@@ -116,7 +116,7 @@ function build() {
     }
   }
 
-  stage.engine.camera.fitSphere([0, 50, 0], 56, 1.08);
+  stage.engine.fitSphere([0, 50, 0], 56, 1.08);
   stage.engine.camera.orientation.set([0, 0, 0, 1]);
   stage.engine.camera.markDirty();
   stage.engine.requestRender();

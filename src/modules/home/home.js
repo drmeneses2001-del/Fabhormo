@@ -56,7 +56,7 @@ export function mount(host) {
     }));
   });
 
-  stage.engine.camera.fitSphere([0, -7, 0], radius + 6, 1.12);
+  stage.engine.fitSphere([0, -7, 0], radius + 6, 1.12);
   // Elevacion inicial: el anillo se lee como elipse, no como una linea.
   stage.engine.camera.setQuat = null;
   stage.engine.camera.rotate(0, -0.42);

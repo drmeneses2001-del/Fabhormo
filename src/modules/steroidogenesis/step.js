@@ -113,7 +113,7 @@ function buildScene() {
       always: true, layer: 4, id: 'cof:' + i, halo: true, font: 'mono' }));
   });
 
-  stage.engine.camera.fitSphere([0, 0, 0], 17, 1.05);
+  stage.engine.fitSphere([0, 0, 0], 17, 1.05);
   stage.engine.camera.orientation.set([0, 0, 0, 1]);
   stage.engine.camera.markDirty();
   return true;

@@ -1,15 +1,15 @@
 {
-  "generated": "2026-09-02T20:12:15.297Z",
+  "generated": "2026-09-02T20:21:38.218Z",
   "variants": {
     "standalone": [
       {
-        "route": "#/organos/hormona/mol_testosterona",
-        "title": "Organos blanco",
-        "ms": 2700,
+        "route": "#/interacciones/receptor/rec_AR/mol_dht",
+        "title": "Receptor y ligando",
+        "ms": 2718,
         "fps": {
-          "fps": 60.0060006000656,
-          "ms": 16.664999999998447,
-          "primitives": 53,
+          "fps": 59.15409642118803,
+          "ms": 16.904999999996896,
+          "primitives": 55,
           "quality": 3
         },
         "errors": []
@@ -17,13 +17,13 @@
     ],
     "artifact": [
       {
-        "route": "#/organos/hormona/mol_testosterona",
-        "title": "Organos blanco",
-        "ms": 2684,
+        "route": "#/interacciones/receptor/rec_AR/mol_dht",
+        "title": "Receptor y ligando",
+        "ms": 2693,
         "fps": {
-          "fps": 59.979007347422815,
-          "ms": 16.672500000001552,
-          "primitives": 53,
+          "fps": 60.395591121865095,
+          "ms": 16.557499999995343,
+          "primitives": 55,
           "quality": 3
         },
         "errors": []

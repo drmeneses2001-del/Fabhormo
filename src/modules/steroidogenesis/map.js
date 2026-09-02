@@ -27,7 +27,7 @@ function rebuild(options) {
 
 function frameAll() {
   const b = stage.engine.scene.bounds();
-  stage.engine.camera.fitSphere(b.center, b.radius, 1.04);
+  stage.engine.fitSphere(b.center, b.radius, 1.04);
   stage.engine.camera.orientation.set([0, 0, 0, 1]);
   stage.engine.camera.markDirty();
 }

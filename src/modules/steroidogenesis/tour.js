@@ -210,7 +210,7 @@ function pathway(highlight, tissue, deficit) {
     ? highlight.map((m) => 'node:' + m).filter((id) => stage.engine.scene.get(id))
     : null;
   const b = stage.engine.scene.bounds(ids);
-  stage.engine.camera.fitSphere(b.center, Math.max(b.radius, 24), 1.2);
+  stage.engine.fitSphere(b.center, Math.max(b.radius, 24), 1.2);
   stage.engine.camera.orientation.set([0, 0, 0, 1]);
   stage.engine.camera.markDirty();
 }

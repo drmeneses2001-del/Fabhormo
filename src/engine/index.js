@@ -100,22 +100,31 @@ export class Engine {
 
   /* ------------------------------------------------------------- camara --- */
 
+  /** El encuadre tiene en cuenta la proporcion del lienzo: la proyeccion usa la
+   *  altura como referencia, asi que en un lienzo mas alto que ancho hay que
+   *  alejarse o la escena se sale por los lados. */
+  fitSphere(center, radius, padding) {
+    const aspect = this.renderer.width / Math.max(1, this.renderer.height);
+    const correction = aspect < 1 ? 1 / aspect : 1;
+    this.camera.fitSphere(center, radius * correction, padding);
+    this.camera.markDirty();
+  }
+
   resetCamera(padding) {
     const b = this.scene.bounds();
-    this.camera.fitSphere(b.center, b.radius, padding);
-    this.camera.markDirty();
+    this.fitSphere(b.center, b.radius, padding);
     this.requestRender();
   }
 
   frameNodes(ids, padding, animate) {
     const b = this.scene.bounds(ids);
     if (!animate) {
-      this.camera.fitSphere(b.center, b.radius, padding);
+      this.fitSphere(b.center, b.radius, padding);
       this.requestRender();
       return;
     }
     const from = this.camera.getState();
-    this.camera.fitSphere(b.center, b.radius, padding);
+    this.fitSphere(b.center, b.radius, padding);
     const to = this.camera.getState();
     this.camera.setState(from);
     this.flyTo(to, 620);
