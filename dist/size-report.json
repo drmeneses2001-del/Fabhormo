@@ -1,14 +1,14 @@
 {
-  "generated": "2026-09-02T19:35:22.859Z",
+  "generated": "2026-09-02T19:56:18.002Z",
   "bundler": "esbuild",
   "minify": true,
-  "bytes": 420467,
+  "bytes": 518880,
   "budget": 4718592,
   "target": 3670016,
   "breakdown": {
-    "codigo JS": 79620,
+    "codigo JS": 114836,
     "CSS + fuentes": 105645,
-    "datos": 228580,
+    "datos": 291777,
     "iconos + shell": 6013
   }
 }

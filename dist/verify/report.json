@@ -1,15 +1,27 @@
 {
-  "generated": "2026-09-02T19:35:23.524Z",
+  "generated": "2026-09-02T19:56:18.662Z",
   "variants": {
     "standalone": [
       {
-        "route": "#/",
-        "title": "Inicio",
-        "ms": 3194,
+        "route": "#/esteroidogenesis/deficit/cond_def_21oh",
+        "title": "Simulador de deficits",
+        "ms": 3310,
         "fps": {
-          "fps": 55.32248397952831,
-          "ms": 18.07583333333411,
-          "primitives": 553,
+          "fps": 52.1240552515049,
+          "ms": 19.18499999999767,
+          "primitives": 768,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/esteroidogenesis/mapa",
+        "title": "Mapa de la via",
+        "ms": 3359,
+        "fps": {
+          "fps": 49.27322000492921,
+          "ms": 20.294999999999224,
+          "primitives": 845,
           "quality": 3
         },
         "errors": []
@@ -17,13 +29,25 @@
     ],
     "artifact": [
       {
-        "route": "#/",
-        "title": "Inicio",
-        "ms": 3092,
+        "route": "#/esteroidogenesis/deficit/cond_def_21oh",
+        "title": "Simulador de deficits",
+        "ms": 3135,
         "fps": {
-          "fps": 53.57382025983526,
-          "ms": 18.665833333332557,
-          "primitives": 553,
+          "fps": 49.69767249233636,
+          "ms": 20.121666666667444,
+          "primitives": 768,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/esteroidogenesis/mapa",
+        "title": "Mapa de la via",
+        "ms": 3003,
+        "fps": {
+          "fps": 47.87170383372206,
+          "ms": 20.88916666666822,
+          "primitives": 845,
           "quality": 3
         },
         "errors": []

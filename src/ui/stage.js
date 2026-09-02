@@ -8,7 +8,7 @@ export function mountStage(host, options) {
   // El lienzo vive en su propio contenedor: el motor mide ese contenedor, asi
   // que un panel lateral nunca descentra la proyeccion.
   const view = el('div', { class: 'a-view a-view--split' });
-  const panelSlot = el('div', { class: 'a-stage__panel', hidden: !o.panel });
+  const panelSlot = el('div', { class: 'a-stage__panel', hidden: !o.panel && !o.panelSlot });
   const canvasWrap = el('div', { class: 'a-stage__canvas' });
   const canvas = el('canvas', { class: 'a-canvas', tabindex: '0',
     role: 'application', 'aria-label': o.label || 'Escena tridimensional interactiva' });

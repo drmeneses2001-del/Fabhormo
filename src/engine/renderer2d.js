@@ -1,7 +1,7 @@
 import { SpriteCache, mix, withAlpha } from './sprites.js';
 import { clamp } from './math.js';
 
-const T_SPHERE = 0, T_BOND = 1, T_TUBE = 2, T_POINT = 3, T_PATH = 4, T_LABEL = 5, T_HALO = 6;
+const T_SPHERE = 0, T_BOND = 1, T_TUBE = 2, T_POINT = 3, T_PATH = 4, T_LABEL = 5, T_HALO = 6, T_ARROW = 7;
 
 /** Render por orden del pintor sobre Canvas 2D. Reutiliza los objetos de la
  *  lista de dibujo entre fotogramas: tras el calentamiento no reserva memoria. */
@@ -141,6 +141,20 @@ export class Renderer2D {
     return it;
   }
 
+  addArrow(ax, ay, az, bx, by, bz, style, node) {
+    const a = {}, b = {};
+    if (!this.project(ax, ay, az, a) || !this.project(bx, by, bz, b)) { this.stats.culled++; return null; }
+    const it = this.item();
+    it.type = T_ARROW;
+    it.x = a.x; it.y = a.y; it.x2 = b.x; it.y2 = b.y;
+    it.depth = (a.depth + b.depth) * 0.5;
+    it.style = style;
+    it.node = node;
+    it.r = 10;
+    if (node && node.pickable) this.pickList.push(it);
+    return it;
+  }
+
   addPath(points2d, depth, style, node) {
     const it = this.item();
     it.type = T_PATH; it.depth = depth; it.points = points2d; it.style = style; it.node = node;
@@ -205,6 +219,7 @@ export class Renderer2D {
         case T_TUBE: this.drawTube(ctx, it, fog, fogColor); break;
         case T_POINT: this.drawPoint(ctx, it, fog); break;
         case T_PATH: this.drawPath(ctx, it); break;
+        case T_ARROW: this.drawArrow(ctx, it, fog, fogColor); break;
         case T_HALO: this.drawHalo(ctx, it); break;
         case T_LABEL: this.drawLabel(ctx, it); break;
       }
@@ -296,6 +311,51 @@ export class Renderer2D {
     ctx.globalAlpha = 1;
   }
 
+  drawArrow(ctx, it, fog, fogColor) {
+    const st = it.style || {};
+    const color = fog > 0.01 ? mix(st.color || this.palette.muted, fogColor, fog * 0.7) : (st.color || this.palette.muted);
+    let dx = it.x2 - it.x, dy = it.y2 - it.y;
+    const len = Math.hypot(dx, dy);
+    if (len < 1) return;
+    dx /= len; dy /= len;
+    // Se recorta en los dos extremos para no invadir los nodos que une.
+    const gapA = st.gapStart === undefined ? 16 : st.gapStart;
+    const gapB = st.gapEnd === undefined ? 18 : st.gapEnd;
+    if (len < gapA + gapB + 6) return;
+    const x1 = it.x + dx * gapA, y1 = it.y + dy * gapA;
+    const x2 = it.x2 - dx * gapB, y2 = it.y2 - dy * gapB;
+    ctx.globalAlpha = st.alpha === undefined ? 1 : st.alpha;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = st.width || 1.4;
+    if (st.dash) ctx.setLineDash(st.dash);
+    ctx.beginPath();
+    if (st.curve) {
+      const mx = (x1 + x2) / 2 - dy * st.curve, my = (y1 + y2) / 2 + dx * st.curve;
+      ctx.moveTo(x1, y1); ctx.quadraticCurveTo(mx, my, x2, y2);
+    } else {
+      ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
+    }
+    ctx.stroke();
+    ctx.setLineDash([]);
+    const head = st.head === undefined ? 7 : st.head;
+    if (head > 0) {
+      this.arrowHead(ctx, x2, y2, dx, dy, head, color);
+      if (st.doubleHead) this.arrowHead(ctx, x1, y1, -dx, -dy, head, color);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  arrowHead(ctx, x, y, dx, dy, size, color) {
+    const nx = -dy, ny = dx;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x - dx * size + nx * size * 0.45, y - dy * size + ny * size * 0.45);
+    ctx.lineTo(x - dx * size - nx * size * 0.45, y - dy * size - ny * size * 0.45);
+    ctx.closePath();
+    ctx.fill();
+  }
+
   drawHalo(ctx, it) {
     ctx.globalAlpha = it.alpha;
     ctx.strokeStyle = it.color;
@@ -362,4 +422,4 @@ export class Renderer2D {
   rememberPosition(nodeId, x, y, depth, r) { this.projected.set(nodeId, { x, y, depth, r }); }
 }
 
-export { T_SPHERE, T_BOND, T_TUBE, T_POINT, T_PATH, T_LABEL, T_HALO, withAlpha };
+export { T_SPHERE, T_BOND, T_TUBE, T_POINT, T_PATH, T_LABEL, T_HALO, T_ARROW, withAlpha };

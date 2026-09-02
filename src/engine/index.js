@@ -91,7 +91,8 @@ export class Engine {
 
   handleResize(force) {
     const parent = this.canvas.parentElement || this.canvas;
-    const w = parent.clientWidth || this.canvas.clientWidth;
+    const reserved = Number(this.canvas.dataset.reserveRight || 0);
+    const w = Math.max(80, (parent.clientWidth || this.canvas.clientWidth) - reserved);
     const h = parent.clientHeight || this.canvas.clientHeight;
     const changed = this.renderer.resize(w, h, Math.min(window.devicePixelRatio || 1, this.quality.settings.dpr));
     if (changed || force) this.requestRender();
@@ -267,6 +268,7 @@ export class Engine {
         case 'points': this.collectPoints(node, alpha); break;
         case 'path': this.collectPath(node, alpha); break;
         case 'label': this.collectLabel(node, alpha); break;
+        case 'arrow': this.collectArrow(node, alpha); break;
         case 'halo': this.collectHalo(node, alpha); break;
       }
     }
@@ -327,7 +329,8 @@ export class Engine {
         this.worldPoint(node, j, pb);
         const ca = (d.colorOverride && d.colorOverride[i]) || d.colors[i];
         const cb = (d.colorOverride && d.colorOverride[j]) || d.colors[j];
-        const aa = d.atomAlpha ? alpha * Math.min(d.atomAlpha[i], d.atomAlpha[j]) : alpha;
+        const aa = d.bondAlpha ? alpha * d.bondAlpha[k]
+          : (d.atomAlpha ? alpha * Math.min(d.atomAlpha[i], d.atomAlpha[j]) : alpha);
         if (aa > 0.02) {
           this.renderer.addBond(pa[0], pa[1], pa[2], pb[0], pb[1], pb[2], ca, cb,
             rep.bond * node.scale, node, aa, order ? order[k] : 1);
@@ -429,6 +432,16 @@ export class Engine {
       size: d.size, color: d.color || this.palette.ink, weight: d.weight, offsetY: d.offsetY,
       halo: d.halo, font: d.font, alpha, avoidCollision: d.avoidCollision,
     }, node);
+  }
+
+  collectArrow(node, alpha) {
+    const d = node.data;
+    const p = node.position;
+    this.renderer.addArrow(
+      d.from[0] + p[0], d.from[1] + p[1], d.from[2] + p[2],
+      d.to[0] + p[0], d.to[1] + p[1], d.to[2] + p[2],
+      { color: d.color, width: d.width, head: d.head, dash: d.dash, doubleHead: d.doubleHead,
+        curve: d.curve, gapStart: d.gapStart, gapEnd: d.gapEnd, alpha }, node);
   }
 
   collectHalo(node, alpha) {

@@ -157,6 +157,17 @@ export function labelNode(text, options) {
   }, o);
 }
 
+/** Flecha entre dos puntos del mundo: reaccion, transporte o relacion dirigida. */
+export function arrowNode(from, to, options) {
+  const o = options || {};
+  return new Node('arrow', {
+    from: Float64Array.from(from), to: Float64Array.from(to),
+    color: o.color || '#888', width: o.width || 1.4, head: o.head,
+    dash: o.dash || null, doubleHead: o.doubleHead || false, curve: o.curve || 0,
+    gapStart: o.gapStart, gapEnd: o.gapEnd,
+  }, o);
+}
+
 /** Anillo/halo plano orientado a la camara: seleccion, portales, acumulacion. */
 export function haloNode(options) {
   const o = options || {};

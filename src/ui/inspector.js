@@ -410,14 +410,21 @@ function collectSources(entity) {
   return out;
 }
 
+/** Una fuente puede venir en linea o como identificador de una lectura. */
+export function resolveSource(source) {
+  if (typeof source === 'string') return byId(source) || { citation: source, verified: false };
+  return source;
+}
+
 function sourceList(sources) {
-  const list = sources || [];
+  const list = (sources || []).map(resolveSource).filter(Boolean);
   if (!list.length) return emptyNote('Sin fuentes registradas todavia.');
   return el('div', {}, list.map((s) => el('div', { style: { marginBottom: '9px' } }, [
     el('div', { class: 'a-src' }, [
       el('span', { class: 'a-badge' + (s.verified ? '' : ' a-badge--warn'), text: s.verified ? 'verificada' : 'pendiente' }),
       ' ', s.citation || [s.db, s.id].filter(Boolean).join(' ') || '',
     ]),
+    s.doi ? el('div', { class: 'a-src mono', text: 'doi:' + s.doi }) : null,
     s.note ? el('div', { class: 'a-src', text: s.note }) : null,
   ].filter(Boolean))));
 }

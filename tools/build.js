@@ -182,6 +182,12 @@ async function main() {
   fs.mkdirSync(DIST, { recursive: true });
   const t0 = Date.now();
 
+  // La compilacion no continua con datos incoherentes.
+  if (!args.includes('--skip-validate')) {
+    const { execFileSync } = await import('node:child_process');
+    execFileSync(process.execPath, [path.join(ROOT, 'tools', 'validate.js')], { stdio: 'inherit' });
+  }
+
   const js = await bundleJs();
   const cssRaw = fontCss() + '\n' + collectCss();
   const css = await minifyCss(cssRaw);
