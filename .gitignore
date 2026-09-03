@@ -1,0 +1,4 @@
+node_modules/
+dist/verify/*.png
+dist/verify/_artifact-host.html
+__pycache__/

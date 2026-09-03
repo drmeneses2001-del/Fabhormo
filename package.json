@@ -1,0 +1,23 @@
+{
+  "name": "atlas-esteroide-3d",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Atlas interactivo autocontenido de hormonas esteroideas sexuales, esteroidogenesis y organos blanco",
+  "scripts": {
+    "build": "node tools/build.js",
+    "verify": "node tools/verify.js",
+    "test": "node --test test/*.test.js",
+    "size": "node tools/size-report.js",
+    "data": "python3 tools/gen-molecules.py && python3 tools/gen-pathway.py && python3 tools/gen-organs.py && python3 tools/gen-clinical.py && python3 tools/gen-atommaps.py && node tools/validate.js",
+    "dev": "python3 -m http.server 8123 --directory src"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/source-sans-3": "^5.3.0",
+    "@fontsource/source-serif-4": "^5.3.0",
+    "esbuild": "^0.28.2",
+    "playwright-core": "^1.62.1"
+  }
+}

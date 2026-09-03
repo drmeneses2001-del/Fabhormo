@@ -1,0 +1,348 @@
+{
+  "generated": "2026-09-02T20:53:37.985Z",
+  "variants": {
+    "standalone": [
+      {
+        "route": "#/",
+        "title": "Inicio",
+        "ms": 3366,
+        "fps": {
+          "fps": 52.2170488664422,
+          "ms": 19.15083333333799,
+          "primitives": 553,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/esteroidogenesis/mapa",
+        "title": "Mapa de la vía",
+        "ms": 3473,
+        "fps": {
+          "fps": 46.26416840155969,
+          "ms": 21.61500000000621,
+          "primitives": 845,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/esteroidogenesis/escalas/tis_leydig",
+        "title": "Dónde ocurre",
+        "ms": 2787,
+        "fps": {
+          "fps": 60.32879191595318,
+          "ms": 16.57583333333023,
+          "primitives": 4,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/esteroidogenesis/deficit/cond_def_21oh",
+        "title": "Simulador de déficits",
+        "ms": 3317,
+        "fps": {
+          "fps": 49.58472790381326,
+          "ms": 20.167499999996895,
+          "primitives": 768,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/esteroidogenesis/recorrido/1",
+        "title": "Recorrido guiado",
+        "ms": 2711,
+        "fps": {
+          "fps": 60.429046228226035,
+          "ms": 16.54833333333178,
+          "primitives": 59,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/atlas",
+        "title": "Atlas molecular",
+        "ms": 2900,
+        "fps": {
+          "fps": 60.162438584188514,
+          "ms": 16.62166666666356,
+          "primitives": 99,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/atlas/mol_testosterona",
+        "title": "Atlas molecular",
+        "ms": 2733,
+        "fps": {
+          "fps": 60.16545500125345,
+          "ms": 16.620833333333334,
+          "primitives": 101,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/organos",
+        "title": "Órganos blanco",
+        "ms": 2683,
+        "fps": {
+          "fps": 60.18054162487462,
+          "ms": 16.616666666666667,
+          "primitives": 46,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/interacciones/mapa",
+        "title": "Mapa de interacciones",
+        "ms": 3568,
+        "fps": {
+          "fps": 43.522414043229325,
+          "ms": 22.97666666666822,
+          "primitives": 1842,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/interacciones/comparar/mol_testosterona/mol_dihidrotestosterona",
+        "title": "Comparador",
+        "ms": 2715,
+        "fps": {
+          "fps": 60.462538418898944,
+          "ms": 16.53916666666822,
+          "primitives": 92,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/receptores",
+        "title": "Receptores",
+        "ms": 680,
+        "fps": null,
+        "errors": []
+      },
+      {
+        "route": "#/ciclo",
+        "title": "Ciclo hormonal",
+        "ms": 700,
+        "fps": null,
+        "errors": []
+      },
+      {
+        "route": "#/laboratorio",
+        "title": "Laboratorio",
+        "ms": 678,
+        "fps": null,
+        "errors": []
+      },
+      {
+        "route": "#/farmacos",
+        "title": "Interacciones farmacológicas",
+        "ms": 699,
+        "fps": null,
+        "errors": []
+      },
+      {
+        "route": "#/elegibilidad",
+        "title": "Elegibilidad clínica",
+        "ms": 697,
+        "fps": null,
+        "errors": []
+      },
+      {
+        "route": "#/lecturas",
+        "title": "Lecturas y fuentes",
+        "ms": 684,
+        "fps": null,
+        "errors": []
+      },
+      {
+        "route": "#/autoevaluacion",
+        "title": "Autoevaluación",
+        "ms": 681,
+        "fps": null,
+        "errors": []
+      }
+    ],
+    "artifact": [
+      {
+        "route": "#/",
+        "title": "Inicio",
+        "ms": 3082,
+        "fps": {
+          "fps": 51.358870104857694,
+          "ms": 19.470833333333335,
+          "primitives": 553,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/esteroidogenesis/mapa",
+        "title": "Mapa de la vía",
+        "ms": 3193,
+        "fps": {
+          "fps": 45.689917758157755,
+          "ms": 21.88666666666201,
+          "primitives": 845,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/esteroidogenesis/escalas/tis_leydig",
+        "title": "Dónde ocurre",
+        "ms": 2537,
+        "fps": {
+          "fps": 59.67774020290984,
+          "ms": 16.756666666665115,
+          "primitives": 4,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/esteroidogenesis/deficit/cond_def_21oh",
+        "title": "Simulador de déficits",
+        "ms": 2817,
+        "fps": {
+          "fps": 52.12631944746945,
+          "ms": 19.18416666666356,
+          "primitives": 768,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/esteroidogenesis/recorrido/1",
+        "title": "Recorrido guiado",
+        "ms": 2530,
+        "fps": {
+          "fps": 59.69258319654336,
+          "ms": 16.75249999999845,
+          "primitives": 59,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/atlas",
+        "title": "Atlas molecular",
+        "ms": 2534,
+        "fps": {
+          "fps": 59.692583196515706,
+          "ms": 16.752500000006208,
+          "primitives": 99,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/atlas/mol_testosterona",
+        "title": "Atlas molecular",
+        "ms": 2497,
+        "fps": {
+          "fps": 60.40775232821546,
+          "ms": 16.554166666666667,
+          "primitives": 101,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/organos",
+        "title": "Órganos blanco",
+        "ms": 2466,
+        "fps": {
+          "fps": 60.033018159976805,
+          "ms": 16.657500000003104,
+          "primitives": 46,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/interacciones/mapa",
+        "title": "Mapa de interacciones",
+        "ms": 3063,
+        "fps": {
+          "fps": 47.62660739798912,
+          "ms": 20.996666666671324,
+          "primitives": 1842,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/interacciones/comparar/mol_testosterona/mol_dihidrotestosterona",
+        "title": "Comparador",
+        "ms": 2502,
+        "fps": {
+          "fps": 60.50521857510779,
+          "ms": 16.527499999998447,
+          "primitives": 92,
+          "quality": 3
+        },
+        "errors": []
+      },
+      {
+        "route": "#/receptores",
+        "title": "Receptores",
+        "ms": 462,
+        "fps": null,
+        "errors": []
+      },
+      {
+        "route": "#/ciclo",
+        "title": "Ciclo hormonal",
+        "ms": 464,
+        "fps": null,
+        "errors": []
+      },
+      {
+        "route": "#/laboratorio",
+        "title": "Laboratorio",
+        "ms": 490,
+        "fps": null,
+        "errors": []
+      },
+      {
+        "route": "#/farmacos",
+        "title": "Interacciones farmacológicas",
+        "ms": 475,
+        "fps": null,
+        "errors": []
+      },
+      {
+        "route": "#/elegibilidad",
+        "title": "Elegibilidad clínica",
+        "ms": 470,
+        "fps": null,
+        "errors": []
+      },
+      {
+        "route": "#/lecturas",
+        "title": "Lecturas y fuentes",
+        "ms": 463,
+        "fps": null,
+        "errors": []
+      },
+      {
+        "route": "#/autoevaluacion",
+        "title": "Autoevaluación",
+        "ms": 466,
+        "fps": null,
+        "errors": []
+      }
+    ]
+  },
+  "ok": true
+}

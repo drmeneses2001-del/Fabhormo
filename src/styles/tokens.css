@@ -1,0 +1,194 @@
+/* Tokens del sistema visual. Tres bloques de tema segun la arquitectura:
+   :root define la paleta clara completa; el bloque de media query cubre el modo
+   sistema; el bloque [data-theme] deja que el interruptor gane en ambos sentidos. */
+
+:root {
+  color-scheme: light dark;
+
+  --bg: #f6f4ef;
+  --bg-stage: #e9e6dd;
+  --surface: #ffffff;
+  --surface-2: #f0eee8;
+  --surface-3: #e6e3da;
+  --ink: #1a1a1a;
+  --ink-2: #4a4a48;
+  --ink-3: #7a7a76;
+  --line: #d9d6cd;
+  --line-strong: #bdb9ac;
+  --accent: #0b5cad;
+  --accent-soft: #d9e7f6;
+  --focus: #b45309;
+  --shadow: 0 1px 2px rgba(20,18,12,.06), 0 8px 24px rgba(20,18,12,.08);
+  --shadow-sm: 0 1px 2px rgba(20,18,12,.08);
+  --stage-fog: #e9e6dd;
+  --overlay: rgba(255,255,255,.86);
+
+  --fam-androgeno: #1f5fbf;
+  --fam-estrogeno: #c2185b;
+  --fam-gestageno: #a06a06;
+  --fam-gluco: #2e7d32;
+  --fam-minera: #00796b;
+  --fam-precursor: #5d6b7a;
+  --fam-farmaco: #6a1b9a;
+
+  --enz-cyp: #d84315;
+  --enz-hsd: #6a1b9a;
+  --enz-red: #558b2f;
+  --enz-sulf: #00838f;
+  --enz-otro: #5d6b7a;
+
+  --comp-mito: #8d2f2f;
+  --comp-rel: #35618f;
+
+  --ring-a: #e64a19;
+  --ring-b: #d9a404;
+  --ring-c: #2e9e5b;
+  --ring-d: #1e88e5;
+  --ring-side: #7a7a76;
+
+  --up: #c62828;
+  --down: #1565c0;
+  --flat: #7a7a76;
+
+  --el-c: #3d3d3d;
+  --el-h: #b8b8b8;
+  --el-o: #d62828;
+  --el-n: #1d4ed8;
+  --el-s: #c99700;
+  --el-p: #e07000;
+  --el-f: #2e9e5b;
+  --el-cl: #1faa59;
+  --el-br: #a33a1f;
+  --el-i: #7e3fbf;
+
+  --font-serif: 'AtlasSerif', Georgia, 'Times New Roman', serif;
+  --font-sans: 'AtlasSans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'AtlasMono', ui-monospace, SFMono-Regular, Consolas, monospace;
+
+  --fs-xs: 11px; --fs-sm: 12px; --fs-md: 13px; --fs-base: 14px;
+  --fs-lg: 16px; --fs-xl: 20px; --fs-2xl: 28px; --fs-3xl: 40px;
+
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px; --sp-7: 48px;
+  --radius: 8px; --radius-sm: 5px; --radius-lg: 14px;
+  --rail-w: 232px; --rail-w-collapsed: 56px; --inspector-w: 366px;
+  --dur-fast: 130ms; --dur: 240ms; --dur-slow: 620ms;
+  --ease: cubic-bezier(.4,0,.2,1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1117;
+    --bg-stage: #080b11;
+    --surface: #141a23;
+    --surface-2: #1b222d;
+    --surface-3: #232b38;
+    --ink: #e8e6e1;
+    --ink-2: #aeb3bc;
+    --ink-3: #737a86;
+    --line: #262e3a;
+    --line-strong: #38424f;
+    --accent: #6fb1ff;
+    --accent-soft: #16283f;
+    --focus: #ffb454;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.45);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.5);
+    --stage-fog: #080b11;
+    --overlay: rgba(14,18,25,.86);
+
+    --fam-androgeno: #5b9cff;
+    --fam-estrogeno: #ff6fa8;
+    --fam-gestageno: #ffcd4a;
+    --fam-gluco: #6fd07a;
+    --fam-minera: #4dd0c4;
+    --fam-precursor: #9aa8b8;
+    --fam-farmaco: #ce93d8;
+
+    --enz-cyp: #ff8a65;
+    --enz-hsd: #ce93d8;
+    --enz-red: #aed581;
+    --enz-sulf: #4dd0e1;
+    --enz-otro: #9aa8b8;
+
+    --comp-mito: #e57373;
+    --comp-rel: #7fb3e6;
+
+    --ring-a: #ff7043;
+    --ring-b: #ffd54f;
+    --ring-c: #66bb6a;
+    --ring-d: #42a5f5;
+    --ring-side: #8b93a0;
+
+    --up: #ef5350;
+    --down: #64b5f6;
+    --flat: #8b93a0;
+
+    --el-c: #c9ccd1;
+    --el-h: #e8e8e8;
+    --el-o: #ff5c5c;
+    --el-n: #6b8bff;
+    --el-s: #ffd23f;
+    --el-p: #ffa040;
+    --el-f: #7be3a3;
+    --el-cl: #6ee7a0;
+    --el-br: #e08060;
+    --el-i: #c08cff;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0d1117;
+  --bg-stage: #080b11;
+  --surface: #141a23;
+  --surface-2: #1b222d;
+  --surface-3: #232b38;
+  --ink: #e8e6e1;
+  --ink-2: #aeb3bc;
+  --ink-3: #737a86;
+  --line: #262e3a;
+  --line-strong: #38424f;
+  --accent: #6fb1ff;
+  --accent-soft: #16283f;
+  --focus: #ffb454;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.45);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.5);
+  --stage-fog: #080b11;
+  --overlay: rgba(14,18,25,.86);
+
+  --fam-androgeno: #5b9cff;
+  --fam-estrogeno: #ff6fa8;
+  --fam-gestageno: #ffcd4a;
+  --fam-gluco: #6fd07a;
+  --fam-minera: #4dd0c4;
+  --fam-precursor: #9aa8b8;
+  --fam-farmaco: #ce93d8;
+
+  --enz-cyp: #ff8a65;
+  --enz-hsd: #ce93d8;
+  --enz-red: #aed581;
+  --enz-sulf: #4dd0e1;
+  --enz-otro: #9aa8b8;
+
+  --comp-mito: #e57373;
+  --comp-rel: #7fb3e6;
+
+  --ring-a: #ff7043;
+  --ring-b: #ffd54f;
+  --ring-c: #66bb6a;
+  --ring-d: #42a5f5;
+  --ring-side: #8b93a0;
+
+  --up: #ef5350;
+  --down: #64b5f6;
+  --flat: #8b93a0;
+
+  --el-c: #c9ccd1;
+  --el-h: #e8e8e8;
+  --el-o: #ff5c5c;
+  --el-n: #6b8bff;
+  --el-s: #ffd23f;
+  --el-p: #ffa040;
+  --el-f: #7be3a3;
+  --el-cl: #6ee7a0;
+  --el-br: #e08060;
+  --el-i: #c08cff;
+}
